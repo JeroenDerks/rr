@@ -22,6 +22,12 @@ const menuItems = [
   },
 ];
 
+const logoStyle= {
+  width: "100%",
+  padding: "0px 80px",
+  boxSizing: "border-box"
+}
+
 const useStyles = makeStyles((theme) => ({
   menu: {
     textAlign: "center",
@@ -45,7 +51,7 @@ export default function Header({ showCategory, setCategory }) {
       >
         <Grid item xs={4}></Grid>
         <Grid item xs={4}>
-          <img src={logo} alt={"header logo"} style={{ width: "100%" }} />
+          <img src={logo} alt={"header logo"} style={logoStyle} />
         </Grid>
         <Grid item xs={4}></Grid>
       </Grid>

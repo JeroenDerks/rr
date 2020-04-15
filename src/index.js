@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { ThemeProvider } from '@material-ui/core';
+import { ParallaxProvider } from 'react-scroll-parallax';
 import Theme from "styles/theme";
 import * as serviceWorker from './serviceWorker';
 
@@ -9,7 +10,10 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={Theme}>
-      <App /></ThemeProvider>
+      <ParallaxProvider>
+        <App />
+      </ParallaxProvider>  
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

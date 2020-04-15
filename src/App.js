@@ -7,7 +7,6 @@ function App() {
   const [selectedCategory, setCategory] = React.useState();
   const [highlightedCategory, showCategory] = React.useState();
 
-  console.log(highlightedCategory);
   return (
     <Box display="flex" width={1} style={{ border: "1px solid red" }}>
       <Box m="auto">
