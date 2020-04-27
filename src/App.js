@@ -8,7 +8,7 @@ function App() {
   const handleResize = () =>
     window.innerWidth < 1200 ? (window.innerWidth / (12 / 5)) * 1.5 : 750;
 
-  const [selectedCategory, setCategory] = React.useState(1);
+  const [selectedCategory, setCategory] = React.useState(0);
   const [highlightedCategory, showCategory] = React.useState();
   const [minHeight, setMinHeight] = React.useState(handleResize);
 
@@ -19,7 +19,11 @@ function App() {
   console.log(highlightedCategory);
 
   return (
-    <Box display="flex" width={1} style={{ border: '1px solid red' }}>
+    <Box
+      display="flex"
+      width={1}
+      style={{ backgroundColor: 'rgb(246, 238, 227)' }}
+    >
       <Box m="auto">
         <Header
           setCategory={(id) => setCategory(id)}

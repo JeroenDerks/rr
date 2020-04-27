@@ -1,5 +1,7 @@
 import React from 'react';
-import ProjectSection from 'components/ProjectSection';
+// import ProjectSection from 'components/ProjectSection';
+import ProjectSectionBox from 'components/ProjectSectionBox';
+
 import ProjectSectionDouble from 'components/ProjectSectionDouble';
 
 import SecondFir0 from 'assets/images/compr_lokoj/2ndFir0.jpg';
@@ -56,10 +58,10 @@ import WaitingWatchingWaiting4 from 'assets/images/compr_lokoj/WaitingWatchingWa
 const projectDetails = [
   {
     title: '2nd Fir',
-    firstColumn: 0,
+    firstColumn: 2,
     images: [
       { image: SecondFir0, width: 7 },
-      { image: SecondFir1, width: 7 },
+      { image: SecondFir1, width: 7, expanded: true },
       { image: SecondFir2, width: 7 },
       { image: SecondFir3, width: 7 },
     ],
@@ -68,13 +70,13 @@ const projectDetails = [
     title: 'Despeck',
     firstColumn: 0,
     images: [
-      { image: Despeck0, width: 5 },
-      { image: Despeck1, width: 6 },
-      { image: Despeck2, width: 5 },
-      { image: Despeck3, width: 6 },
-      { image: Despeck4, width: 5 },
-      { image: Despeck5, width: 6 },
       { image: Despeck6, width: 5 },
+      { image: Despeck0, width: 5 },
+      { image: Despeck2, width: 5 },
+      { image: Despeck4, width: 5 },
+      { image: Despeck3, width: 6 },
+      { image: Despeck1, width: 6 },
+      { image: Despeck5, width: 6 },
     ],
   },
   {
@@ -110,9 +112,9 @@ const projectDetails = [
     title: 'Memory Cell',
     firstColumn: 3,
     images: [
+      { image: MemoryCell2, width: 5 },
       { image: MemoryCell0, width: 7 },
       { image: MemoryCell1, width: 7 },
-      { image: MemoryCell2, width: 5 },
     ],
   },
   {
@@ -130,8 +132,8 @@ const projectDetails = [
     images: [
       { image: PlutosCave0, width: 7 },
       { image: PlutosCave1, width: 7 },
-      { image: PlutosCave2, width: 5 },
       { image: PlutosCave3, width: 7, expanded: true },
+      { image: PlutosCave2, width: 5 },
     ],
   },
   {
@@ -164,7 +166,7 @@ export default function Lokoj({ minHeight }) {
         rows ? (
           <ProjectSectionDouble key={title} rows={rows} minHeight={minHeight} />
         ) : (
-          <ProjectSection
+          <ProjectSectionBox
             key={title}
             firstColumn={firstColumn}
             images={images}
