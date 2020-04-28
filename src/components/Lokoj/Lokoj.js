@@ -1,6 +1,7 @@
 import React from 'react';
 // import ProjectSection from 'components/ProjectSection';
-import ProjectSectionBox from 'components/ProjectSectionBox';
+// import ProjectSectionBox from 'components/ProjectSectionBox';
+import ProjectSectionRellax from 'components/ProjectSectionRellax';
 
 import ProjectSectionDouble from 'components/ProjectSectionDouble';
 
@@ -57,13 +58,13 @@ import WaitingWatchingWaiting4 from 'assets/images/compr_lokoj/WaitingWatchingWa
 
 const projectDetails = [
   {
-    title: '2nd Fir',
+    title: 'Second Fir',
     firstColumn: 2,
     images: [
       { image: SecondFir0, width: 7 },
-      { image: SecondFir1, width: 7, expanded: true },
+      { image: SecondFir1, width: 7 },
       { image: SecondFir2, width: 7 },
-      { image: SecondFir3, width: 7 },
+      { image: SecondFir3, width: 7, expanded: true },
     ],
   },
   {
@@ -72,7 +73,7 @@ const projectDetails = [
     images: [
       { image: Despeck6, width: 5 },
       { image: Despeck0, width: 5 },
-      { image: Despeck2, width: 5 },
+      { image: Despeck2, width: 5, expanded: true },
       { image: Despeck4, width: 5 },
       { image: Despeck3, width: 6 },
       { image: Despeck1, width: 6 },
@@ -84,9 +85,9 @@ const projectDetails = [
     firstColumn: 3,
     images: [
       { image: DisplacementInversion0, width: 5 },
-      { image: DisplacementInversion1, width: 5 },
       { image: DisplacementInversion2, width: 5 },
       { image: DisplacementInversion3, width: 5 },
+      { image: DisplacementInversion1, width: 5, expanded: true },
     ],
   },
   {
@@ -94,9 +95,9 @@ const projectDetails = [
     firstColumn: 2,
     images: [
       { image: Fur0, width: 5 },
-      { image: Fur1, width: 7 },
       { image: Fur2, width: 7 },
       { image: Fur3, width: 7 },
+      { image: Fur1, width: 7, expanded: true },
     ],
   },
   {
@@ -104,43 +105,43 @@ const projectDetails = [
     firstColumn: 1,
     images: [
       { image: GhostWillow0, width: 5 },
-      { image: GhostWillow1, width: 7 },
+      { image: GhostWillow1, width: 7, expanded: true },
       { image: GhostWillow2, width: 7 },
     ],
   },
   {
     title: 'Memory Cell',
-    firstColumn: 3,
+    firstColumn: 2,
     images: [
       { image: MemoryCell2, width: 5 },
       { image: MemoryCell0, width: 7 },
-      { image: MemoryCell1, width: 7 },
+      { image: MemoryCell1, width: 7, expanded: true },
     ],
   },
   {
     title: 'No Title',
-    firstColumn: 1,
+    firstColumn: 3,
     images: [
-      { image: NoTitle0, width: 7, expanded: true },
+      { image: NoTitle0, width: 7 },
       { image: NoTitle1, width: 7 },
-      { image: NoTitle2, width: 7 },
+      { image: NoTitle2, width: 7, expanded: true },
     ],
   },
   {
     title: "Pluto's Cave",
-    firstColumn: 0,
+    firstColumn: 1,
     images: [
       { image: PlutosCave0, width: 7 },
-      { image: PlutosCave1, width: 7 },
-      { image: PlutosCave3, width: 7, expanded: true },
+      { image: PlutosCave3, width: 7 },
+      { image: PlutosCave1, width: 7, expanded: true },
       { image: PlutosCave2, width: 5 },
     ],
   },
   {
     title: 'Put A Little On',
-    firstColumn: 2,
+    firstColumn: 3,
     images: [
-      { image: PutALittleOn0, width: 7 },
+      { image: PutALittleOn0, width: 7, expanded: true },
       { image: PutALittleOn1, width: 7 },
       { image: PutALittleOn2, width: 7 },
       { image: PutALittleOn3, width: 7 },
@@ -148,12 +149,12 @@ const projectDetails = [
   },
   {
     title: 'Waiting Watching Waiting',
-    firstColumn: 0,
+    firstColumn: 1,
     images: [
-      { image: WaitingWatchingWaiting0, width: 7, expanded: true },
+      { image: WaitingWatchingWaiting0, width: 7 },
       { image: WaitingWatchingWaiting1, width: 7 },
       { image: WaitingWatchingWaiting2, width: 7 },
-      { image: WaitingWatchingWaiting3, width: 7 },
+      { image: WaitingWatchingWaiting3, width: 7, expanded: true },
       { image: WaitingWatchingWaiting4, width: 7 },
     ],
   },
@@ -162,12 +163,13 @@ const projectDetails = [
 export default function Lokoj({ minHeight }) {
   return (
     <>
-      {projectDetails.map(({ firstColumn, images, rows, title }) =>
+      {projectDetails.map(({ firstColumn, images, rows, title }, i) =>
         rows ? (
           <ProjectSectionDouble key={title} rows={rows} minHeight={minHeight} />
         ) : (
-          <ProjectSectionBox
+          <ProjectSectionRellax
             key={title}
+            title={title}
             firstColumn={firstColumn}
             images={images}
             minHeight={minHeight}

@@ -1,5 +1,63 @@
-.parralax-class{
-    margin-inline-end: 0px;
-    margin-inline-start: 0px;
-    
+@font-face {
+  font-family: 'd-dindin-bold';
+  src: url('/assets/fonts/d-din-bold-webfont.woff2') format('woff2'),
+    url('/assets/fonts/d-din-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'd-dindin-italic';
+  src: url('/assets/fonts/d-din-italic-webfont.woff2') format('woff2'),
+    url('/assets/fonts/d-din-italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'd-dinregular';
+  src: url('/assets/fonts/d-din-webfont.woff2') format('woff2'),
+    url('/assets/fonts/d-din-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'd-din_condenseddinCnBd';
+  src: url('/assets/fonts/d-dincondensed-bold-webfont.woff2') format('woff2'),
+    url('/assets/fonts/d-dincondensed-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'd-din_condensedregular';
+  src: url('/assets/fonts/d-dincondensed-webfont.woff2') format('woff2'),
+    url('/assets/fonts/d-dincondensed-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'd-din_expdinexp-bold';
+  src: url('/assets/fonts/d-dinexp-bold-webfont.woff2') format('woff2'),
+    url('/assets/fonts/d-dinexp-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'd-din_expdinexp-italic';
+  src: url('/assets/fonts/d-dinexp-italic-webfont.woff2') format('woff2'),
+    url('/assets/fonts/d-dinexp-italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'd-din_expregular';
+  src: url('/assets/fonts/d-dinexp-webfont.woff2') format('woff2'),
+    url('/assets/fonts/d-dinexp-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }

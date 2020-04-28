@@ -9,6 +9,9 @@ export const gridStyle = makeStyles({
     transitionTimingFunction: 'ease',
     cursor: 'pointer',
   },
+  greyScale: {
+    filter: 'grayscale(70%)',
+  },
   image: {
     width: '100%',
     transition: 'filter .2s ',
@@ -16,7 +19,7 @@ export const gridStyle = makeStyles({
       filter: 'grayscale(0%)',
     },
   },
-  greyScale: {
-    filter: 'grayscale(70%)',
+  colored: {
+    filter: 'grayscale(0%)',
   },
 });

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box } from '@material-ui/core/';
-import Header from 'components/Header';
 import Aferoj from 'components/Aferoj';
+import Header from 'components/Header';
 import Lokoj from 'components/Lokoj';
+import OpeningGraphic from 'components/OpeningGraphic';
+import { Box } from '@material-ui/core/';
 
 function App() {
   const handleResize = () =>
@@ -33,7 +34,7 @@ function App() {
         {selectedCategory === 1 && <Aferoj minHeight={minHeight} />}
         {selectedCategory === 2 && <div>Bildoj</div>}
         {selectedCategory === 3 && <div>Artist</div>}
-        {selectedCategory === undefined && <div>graphic</div>}
+        {selectedCategory === undefined && <OpeningGraphic />}
       </Box>
     </Box>
   );
