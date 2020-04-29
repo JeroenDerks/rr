@@ -34,7 +34,6 @@ export default function ProjectSection({ firstColumn, images, minHeight }) {
           className={style.gridItem}
           style={{ padding: width === 5 ? '2%' : '1%' }}
         >
-          {console.log(width)}
           <img
             src={image}
             alt={image}

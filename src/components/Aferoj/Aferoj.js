@@ -1,6 +1,9 @@
 import React from 'react';
-import ProjectSection from 'components/ProjectSection';
-import ProjectSectionDouble from 'components/ProjectSectionDouble';
+// import ProjectSection from 'components/ProjectSection';
+// import ProjectSectionDouble from 'components/ProjectSectionDouble';
+import ProjectSection from 'components/Sections/ProjectSection';
+import RellaxSingle from 'components/Sections/RellaxSingle';
+import RellaxDouble from 'components/Sections/RellaxDouble';
 
 import Transformer0 from 'assets/images/compr_aferoj/Transformer0.jpg';
 import Transformer1 from 'assets/images/compr_aferoj/Transformer1.jpg';
@@ -171,12 +174,18 @@ const projectDetails = [
 export default function Aferoj({ minHeight }) {
   return (
     <>
-      {projectDetails.map(({ firstColumn, images, rows, title }) =>
+      {projectDetails.map(({ firstColumn, images, rows, title }, i) =>
         rows ? (
-          <ProjectSectionDouble key={title} rows={rows} minHeight={minHeight} />
+          <RellaxDouble
+            key={i}
+            title={title}
+            rows={rows}
+            minHeight={minHeight}
+          />
         ) : (
-          <ProjectSection
-            key={title}
+          <RellaxSingle
+            key={i}
+            title={title}
             firstColumn={firstColumn}
             images={images}
             minHeight={minHeight}

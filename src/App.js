@@ -2,6 +2,7 @@ import React from 'react';
 import Aferoj from 'components/Aferoj';
 import Header from 'components/Header';
 import Lokoj from 'components/Lokoj';
+import Bildoj from 'components/Bildoj';
 import OpeningGraphic from 'components/OpeningGraphic';
 import { Box } from '@material-ui/core/';
 
@@ -9,7 +10,7 @@ function App() {
   const handleResize = () =>
     window.innerWidth < 1200 ? (window.innerWidth / (12 / 5)) * 1.5 : 750;
 
-  const [selectedCategory, setCategory] = React.useState(0);
+  const [selectedCategory, setCategory] = React.useState(1);
   const [highlightedCategory, showCategory] = React.useState();
   const [minHeight, setMinHeight] = React.useState(handleResize);
 
@@ -32,7 +33,7 @@ function App() {
         />
         {selectedCategory === 0 && <Lokoj minHeight={minHeight} />}
         {selectedCategory === 1 && <Aferoj minHeight={minHeight} />}
-        {selectedCategory === 2 && <div>Bildoj</div>}
+        {selectedCategory === 2 && <Bildoj minHeight={minHeight} />}
         {selectedCategory === 3 && <div>Artist</div>}
         {selectedCategory === undefined && <OpeningGraphic />}
       </Box>

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box, Typography } from '@material-ui/core/';
-import { gridStyle } from 'styles/global';
 import RellaxWrapper from 'react-rellax-wrapper';
+import { Box } from '@material-ui/core/';
+import { gridStyle } from 'styles/global';
 import 'styles/global.css';
 
-export default function ProjectSectionBox({
+export default function RellaxSingle({
   firstColumn,
   images,
   minHeight,

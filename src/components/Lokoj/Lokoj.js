@@ -1,9 +1,11 @@
 import React from 'react';
 // import ProjectSection from 'components/ProjectSection';
 // import ProjectSectionBox from 'components/ProjectSectionBox';
-import ProjectSectionRellax from 'components/ProjectSectionRellax';
+// import ProjectSectionRellax from 'components/ProjectSectionRellax';
+// import ProjectSectionDouble from 'components/ProjectSectionDouble';
 
-import ProjectSectionDouble from 'components/ProjectSectionDouble';
+import RellaxSingle from 'components/Sections/RellaxSingle';
+import RellaxDouble from 'components/Sections/RellaxDouble';
 
 import SecondFir0 from 'assets/images/compr_lokoj/2ndFir0.jpg';
 import SecondFir1 from 'assets/images/compr_lokoj/2ndFir1.jpg';
@@ -69,15 +71,24 @@ const projectDetails = [
   },
   {
     title: 'Despeck',
-    firstColumn: 0,
-    images: [
-      { image: Despeck6, width: 5 },
-      { image: Despeck0, width: 5 },
-      { image: Despeck2, width: 5, expanded: true },
-      { image: Despeck4, width: 5 },
-      { image: Despeck3, width: 6 },
-      { image: Despeck1, width: 6 },
-      { image: Despeck5, width: 6 },
+    rows: [
+      {
+        firstColumn: 3,
+        images: [
+          { image: Despeck6, width: 5 },
+          { image: Despeck0, width: 5 },
+          { image: Despeck2, width: 5, expanded: true },
+          { image: Despeck4, width: 5 },
+        ],
+      },
+      {
+        firstColumn: 1,
+        images: [
+          { image: Despeck3, width: 7 },
+          { image: Despeck1, width: 7 },
+          { image: Despeck5, width: 7 },
+        ],
+      },
     ],
   },
   {
@@ -165,9 +176,14 @@ export default function Lokoj({ minHeight }) {
     <>
       {projectDetails.map(({ firstColumn, images, rows, title }, i) =>
         rows ? (
-          <ProjectSectionDouble key={title} rows={rows} minHeight={minHeight} />
+          <RellaxDouble
+            key={title}
+            title={title}
+            rows={rows}
+            minHeight={minHeight}
+          />
         ) : (
-          <ProjectSectionRellax
+          <RellaxSingle
             key={title}
             title={title}
             firstColumn={firstColumn}
