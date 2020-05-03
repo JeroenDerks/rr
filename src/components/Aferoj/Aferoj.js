@@ -1,15 +1,13 @@
 import React from 'react';
 // import ProjectSection from 'components/ProjectSection';
 // import ProjectSectionDouble from 'components/ProjectSectionDouble';
-import ProjectSection from 'components/Sections/ProjectSection';
+
 import RellaxSingle from 'components/Sections/RellaxSingle';
 import RellaxDouble from 'components/Sections/RellaxDouble';
 
 import Transformer0 from 'assets/images/compr_aferoj/Transformer0.jpg';
 import Transformer1 from 'assets/images/compr_aferoj/Transformer1.jpg';
 import Transformer2 from 'assets/images/compr_aferoj/Transformer2.jpg';
-import CroppedTree0 from 'assets/images/compr_aferoj/cropped_tree_0.jpg';
-import CroppedTree1 from 'assets/images/compr_aferoj/cropped_tree_1.jpg';
 
 import CrossCut0 from 'assets/images/compr_aferoj/Crosscut_0.jpg';
 import CrossCut1 from 'assets/images/compr_aferoj/Crosscut_1.jpg';
@@ -64,14 +62,14 @@ const projectDetails = [
       { image: Transformer2, width: 5 },
     ],
   },
-  {
-    title: 'Cropped Tree',
-    firstColumn: 2,
-    images: [
-      { image: CroppedTree0, width: 7, expanded: true },
-      { image: CroppedTree1, width: 7 },
-    ],
-  },
+  // {
+  //   title: 'Cropped Tree',
+  //   firstColumn: 2,
+  //   images: [
+  //     { image: CroppedTree0, width: 7, expanded: true },
+  //     { image: CroppedTree1, width: 7 },
+  //   ],
+  // },
   {
     title: 'Crosscut',
     firstColumn: 3,
@@ -171,24 +169,18 @@ const projectDetails = [
   },
 ];
 
-export default function Aferoj({ minHeight }) {
+export default function Aferoj() {
   return (
     <>
       {projectDetails.map(({ firstColumn, images, rows, title }, i) =>
         rows ? (
-          <RellaxDouble
-            key={i}
-            title={title}
-            rows={rows}
-            minHeight={minHeight}
-          />
+          <RellaxDouble key={i} title={title} rows={rows} />
         ) : (
           <RellaxSingle
             key={i}
             title={title}
             firstColumn={firstColumn}
             images={images}
-            minHeight={minHeight}
           />
         )
       )}

@@ -73,20 +73,20 @@ const projectDetails = [
     title: 'Despeck',
     rows: [
       {
+        firstColumn: 1,
+        images: [
+          { image: Despeck3, width: 7 },
+          { image: Despeck1, width: 7 },
+          { image: Despeck5, width: 7 },
+        ],
+      },
+      {
         firstColumn: 3,
         images: [
           { image: Despeck6, width: 5 },
           { image: Despeck0, width: 5 },
           { image: Despeck2, width: 5, expanded: true },
           { image: Despeck4, width: 5 },
-        ],
-      },
-      {
-        firstColumn: 1,
-        images: [
-          { image: Despeck3, width: 7 },
-          { image: Despeck1, width: 7 },
-          { image: Despeck5, width: 7 },
         ],
       },
     ],
@@ -171,24 +171,18 @@ const projectDetails = [
   },
 ];
 
-export default function Lokoj({ minHeight }) {
+export default function Lokoj() {
   return (
     <>
       {projectDetails.map(({ firstColumn, images, rows, title }, i) =>
         rows ? (
-          <RellaxDouble
-            key={title}
-            title={title}
-            rows={rows}
-            minHeight={minHeight}
-          />
+          <RellaxDouble key={i} title={title} rows={rows} />
         ) : (
           <RellaxSingle
-            key={title}
+            key={i}
             title={title}
             firstColumn={firstColumn}
             images={images}
-            minHeight={minHeight}
           />
         )
       )}

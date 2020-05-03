@@ -2,14 +2,14 @@ import React from 'react';
 import RellaxWrapper from 'react-rellax-wrapper';
 import { Box } from '@material-ui/core/';
 import { gridStyle } from 'styles/global';
+import { AppContext } from 'App';
 import 'styles/global.css';
 
-export default function RellaxSingle({
-  firstColumn,
-  images,
-  minHeight,
-  title,
-}) {
+export default function RellaxSingle({ firstColumn, images, title }) {
+  const {
+    state: { minHeight },
+  } = React.useContext(AppContext);
+
   const [imageArr, setImages] = React.useState(images);
   const style = gridStyle();
 
@@ -42,7 +42,7 @@ export default function RellaxSingle({
               <p
                 style={{
                   fontFamily: 'd-dindin-bold , Ariel, Helvetica, sans-serif',
-                  fontSize: 200,
+                  fontSize: window.innerWidth / 8,
                   lineHeight: 0.8,
                   color: 'rgb(230, 221, 209)',
                   opacity: 0.5,

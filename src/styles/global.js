@@ -14,10 +14,10 @@ export const gridStyle = makeStyles({
   },
   image: {
     width: '100%',
-    transition: 'filter .2s ',
-    '&:hover': {
-      filter: 'grayscale(0%)',
-    },
+    // transition: 'filter .2s ',
+    // '&:hover': {
+    //   filter: 'grayscale(0%)',
+    // },
   },
   colored: {
     filter: 'grayscale(0%)',

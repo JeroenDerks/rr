@@ -1,16 +1,18 @@
 import React from 'react';
 import Aferoj from 'components/Aferoj';
+import Artist from 'components/Artist';
+import Bildoj from 'components/Bildoj';
 import Header from 'components/Header';
 import Lokoj from 'components/Lokoj';
-import Bildoj from 'components/Bildoj';
 import OpeningGraphic from 'components/OpeningGraphic';
 import { Box } from '@material-ui/core/';
+export const AppContext = React.createContext();
 
 function App() {
   const handleResize = () =>
     window.innerWidth < 1200 ? (window.innerWidth / (12 / 5)) * 1.5 : 750;
 
-  const [selectedCategory, setCategory] = React.useState(1);
+  const [selectedCategory, setCategory] = React.useState(2);
   const [highlightedCategory, showCategory] = React.useState();
   const [minHeight, setMinHeight] = React.useState(handleResize);
 
@@ -21,23 +23,32 @@ function App() {
   console.log(highlightedCategory);
 
   return (
-    <Box
-      display="flex"
-      width={1}
-      style={{ backgroundColor: 'rgb(246, 238, 227)' }}
+    <AppContext.Provider
+      value={{
+        state: {
+          minHeight,
+        },
+        actions: {},
+      }}
     >
-      <Box m="auto">
-        <Header
-          setCategory={(id) => setCategory(id)}
-          showCategory={(id) => showCategory(id)}
-        />
-        {selectedCategory === 0 && <Lokoj minHeight={minHeight} />}
-        {selectedCategory === 1 && <Aferoj minHeight={minHeight} />}
-        {selectedCategory === 2 && <Bildoj minHeight={minHeight} />}
-        {selectedCategory === 3 && <div>Artist</div>}
-        {selectedCategory === undefined && <OpeningGraphic />}
+      <Box
+        display="flex"
+        width={1}
+        style={{ backgroundColor: 'rgb(246, 238, 227)' }}
+      >
+        <Box m="auto">
+          <Header
+            setCategory={(id) => setCategory(id)}
+            showCategory={(id) => showCategory(id)}
+          />
+          {selectedCategory === 0 && <Lokoj />}
+          {selectedCategory === 1 && <Aferoj />}
+          {selectedCategory === 2 && <Bildoj />}
+          {selectedCategory === 3 && <Artist />}
+          {selectedCategory === undefined && <OpeningGraphic />}
+        </Box>
       </Box>
-    </Box>
+    </AppContext.Provider>
   );
 }
 

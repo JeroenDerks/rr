@@ -1,5 +1,7 @@
 import React from 'react';
 import RellaxSingle from 'components/Sections/RellaxSingle';
+import SectionStroke from 'components/Sections/SectionStroke';
+import SectionSquare from 'components/Sections/SectionSquare';
 
 import circle_ice from 'assets/images/compr_bildoj/circle_ice.png';
 import circle_mineral from 'assets/images/compr_bildoj/circle_mineral.png';
@@ -26,7 +28,7 @@ import stroke_twin_pines from 'assets/images/compr_bildoj/stroke_twin_pines.jpg'
 const projectDetails = [
   {
     title: 'Circles',
-    component: 'square',
+    component: SectionSquare,
     firstColumn: 1,
     images: [
       { image: circle_ice, width: 6 },
@@ -39,7 +41,7 @@ const projectDetails = [
   },
   {
     title: 'Memportreto',
-    component: 'traditional',
+    component: RellaxSingle,
     firstColumn: 2,
     images: [
       { image: drawing_memportreto0, width: 7, expanded: true },
@@ -50,13 +52,13 @@ const projectDetails = [
   },
   {
     title: 'Nokte',
-    component: 'traditional',
+    component: RellaxSingle,
     firstColumn: 4,
     images: [{ image: drawing_nokte, width: 7, expanded: true }],
   },
   {
     title: 'Photopgraphs',
-    component: 'stroke',
+    component: SectionStroke,
     firstColumn: 2,
     images: [
       { image: stroke_new_orchard, width: 8 },
@@ -70,20 +72,18 @@ const projectDetails = [
   },
 ];
 
-export default function Aferoj({ minHeight }) {
+export default function Bildoj() {
   return (
     <>
       {projectDetails.map(
-        ({ firstColumn, component, images, rows, title }, i) =>
-          component === 'traditional' && (
-            <RellaxSingle
-              key={i}
-              title={title}
-              firstColumn={firstColumn}
-              images={images}
-              minHeight={minHeight}
-            />
-          )
+        ({ component: Component, firstColumn, images, title }, i) => (
+          <Component
+            key={i}
+            title={title}
+            firstColumn={firstColumn}
+            images={images}
+          />
+        )
       )}
     </>
   );
