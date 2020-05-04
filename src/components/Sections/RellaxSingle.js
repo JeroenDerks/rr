@@ -5,7 +5,12 @@ import { gridStyle } from 'styles/global';
 import { AppContext } from 'App';
 import 'styles/global.css';
 
-export default function RellaxSingle({ firstColumn, images, title }) {
+export default function RellaxSingle({
+  firstColumn,
+  images,
+  title,
+  textOffset,
+}) {
   const {
     state: { minHeight },
   } = React.useContext(AppContext);
@@ -16,7 +21,7 @@ export default function RellaxSingle({ firstColumn, images, title }) {
   const setImg = (i) => {
     let imgs = imageArr;
     imgs.forEach((img, _i) => {
-      i === _i ? (img.expanded = !img.expanded) : (img.expanded = false);
+      i === _i ? (img.expanded = true) : (img.expanded = false);
     });
     setImages([...imgs]);
   };
@@ -26,19 +31,36 @@ export default function RellaxSingle({ firstColumn, images, title }) {
 
   return (
     <>
+      {/* <Box className={style.grid}>
+        <p
+          style={{
+            fontFamily: 'd-dinregular, Ariel, Helvetica, sans-serif',
+            letterSpacing: 4,
+
+            fontSize: 12,
+          }}
+        >
+          <span style={{ textTransform: 'uppercase' }}>Location, year</span> -
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </Box> */}
+      <Box p={10}></Box>
       <Box
         className={style.grid}
         id={title.replace(/\W+/g, '')}
+        // justifyContent="flex-end"
         style={{
           minHeight: minHeight,
           display: 'flex',
-          alignItems: 'center',
-          padding: '120px 0px ',
+          alignItems: 'flex-start',
+          padding: '120px 0px',
+          // border: '1px solid coral',
         }}
       >
         {firstColumn > 0 && (
           <Box width={firstColumn * columnWidth}>
-            <RellaxWrapper speed={(Math.random() - 0.5) * 6} center={true}>
+            {/* <RellaxWrapper speed={(Math.random() - 0.5) * 6} center={true}>
               <p
                 style={{
                   fontFamily: 'd-dindin-bold , Ariel, Helvetica, sans-serif',
@@ -50,7 +72,7 @@ export default function RellaxSingle({ firstColumn, images, title }) {
               >
                 {title}
               </p>
-            </RellaxWrapper>
+            </RellaxWrapper> */}
           </Box>
         )}
         {images &&
@@ -61,29 +83,34 @@ export default function RellaxSingle({ firstColumn, images, title }) {
                 padding: width === 5 ? '1% 2% 2%' : '1%',
                 boxSizing: 'border-box',
                 display: 'inline-block',
+                // border: '1px solid grey',
               }}
+              zIndex={'model'}
               className={style.gridItem}
               onClick={() => setImg(i)}
               key={i}
             >
               <RellaxWrapper
-                speed={speed ? speed : (Math.random() - 0.5) * 2}
+                speed={speed ? speed : (Math.random() - 0.5) * 3}
                 center={true}
               >
                 <img src={image} alt={image} className={style.image} />
               </RellaxWrapper>
             </Box>
           ))}
-
+      </Box>
+      <Box>
         <Box
-          position={'absolute'}
+          // position={'absolute'}
           style={{
-            marginTop: minHeight * 0.2,
-            marginLeft: columnWidth * 2,
+            marginTop: -minHeight * 0.5,
+            marginLeft: columnWidth * textOffset,
+            padding: '1%',
+            // border: '1px solid pink',
           }}
           zIndex={'tooltip'}
           height={100}
-          width={columnWidth * 4}
+          width={columnWidth * 3}
         >
           <p
             style={{
@@ -93,7 +120,7 @@ export default function RellaxSingle({ firstColumn, images, title }) {
               fontSize: 12,
             }}
           >
-            Location, year
+            {title}
           </p>
           <p
             style={{
@@ -107,6 +134,7 @@ export default function RellaxSingle({ firstColumn, images, title }) {
           </p>
         </Box>
       </Box>
+      <Box p={10}></Box>
     </>
   );
 }

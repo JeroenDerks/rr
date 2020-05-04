@@ -55,11 +55,12 @@ import Viriditas2 from 'assets/images/compr_aferoj/Viriditas2.jpg';
 const projectDetails = [
   {
     title: 'Transformer',
-    firstColumn: 2,
+    firstColumn: 1,
+    textOffset: 8,
     images: [
-      { image: Transformer0, width: 5 },
-      { image: Transformer1, width: 7, expanded: true },
+      { image: Transformer1, width: 7 },
       { image: Transformer2, width: 5 },
+      { image: Transformer0, width: 5, expanded: true },
     ],
   },
   // {
@@ -71,68 +72,9 @@ const projectDetails = [
   //   ],
   // },
   {
-    title: 'Crosscut',
-    firstColumn: 3,
-    images: [
-      { image: CrossCut0, width: 7 },
-      { image: CrossCut1, width: 5, expanded: true },
-    ],
-  },
-  {
-    title: 'Defense Defiance',
-    firstColumn: 2,
-    images: [
-      { image: DefenseDefiance0, width: 5 },
-      { image: DefenseDefiance1, width: 7, expanded: true },
-      { image: DefenseDefiance2, width: 7 },
-    ],
-  },
-  {
-    title: 'Lost Wood',
-    rows: [
-      {
-        firstColumn: 1,
-        images: [
-          { image: LostWood7, width: 7 },
-          { image: LostWood6, width: 7 },
-          { image: LostWood1, width: 5 },
-          { image: LostWood2, width: 5 },
-        ],
-      },
-      {
-        firstColumn: 0,
-        images: [
-          { image: LostWood0, width: 5 },
-          { image: LostWood4, width: 5 },
-          { image: LostWood5, width: 5, expanded: true },
-          { image: LostWood8, width: 5 },
-          { image: LostWood3, width: 5 },
-          { image: LostWood9, width: 5 },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'Memory Phantom',
-    firstColumn: 2,
-    images: [
-      { image: MemoryPhantom0, width: 5 },
-      { image: MemoryPhantom1, width: 7 },
-      { image: MemoryPhantom2, width: 5, expanded: true },
-    ],
-  },
-  {
-    title: 'Memory Vessel',
-    firstColumn: 2,
-    images: [
-      { image: MemoryVessel0, width: 5, expanded: true },
-      { image: MemoryVessel1, width: 7 },
-      { image: MemoryVessel2, width: 5 },
-    ],
-  },
-  {
     title: 'NRD Reitzenstein',
     firstColumn: 1,
+    textOffset: 3,
     images: [
       { image: NRD_Reitzenstein0, width: 7 },
       { image: NRD_Reitzenstein1, width: 7 },
@@ -142,8 +84,73 @@ const projectDetails = [
     ],
   },
   {
-    title: 'Palendrome',
+    title: 'Crosscut',
+    firstColumn: 1,
+    textOffset: 7,
+    images: [
+      { image: CrossCut0, width: 7 },
+      { image: CrossCut1, width: 5, expanded: true },
+    ],
+  },
+  {
+    title: 'Defense Defiance',
+    firstColumn: 2,
+    textOffset: 7,
+    images: [
+      { image: DefenseDefiance0, width: 5 },
+      { image: DefenseDefiance1, width: 7 },
+      { image: DefenseDefiance2, width: 7, expanded: true },
+    ],
+  },
+  // {
+  //   title: 'Lost Wood',
+  //   rows: [
+  //     {
+  //       firstColumn: 1,
+  //       images: [
+  //         { image: LostWood7, width: 7 },
+  //         { image: LostWood6, width: 7 },
+  //         { image: LostWood1, width: 5 },
+  //         { image: LostWood2, width: 5 },
+  //       ],
+  //     },
+  //     {
+  //       firstColumn: 0,
+  //       images: [
+  //         { image: LostWood0, width: 5 },
+  //         { image: LostWood4, width: 5 },
+  //         { image: LostWood5, width: 5, expanded: true },
+  //         { image: LostWood8, width: 5 },
+  //         { image: LostWood3, width: 5 },
+  //         { image: LostWood9, width: 5 },
+  //       ],
+  //     },
+  //   ],
+  // },
+  {
+    title: 'Memory Phantom',
     firstColumn: 3,
+    textOffset: 1,
+    images: [
+      { image: MemoryPhantom1, width: 7 },
+      { image: MemoryPhantom0, width: 5, expanded: true },
+      { image: MemoryPhantom2, width: 5 },
+    ],
+  },
+  {
+    title: 'Memory Vessel',
+    firstColumn: 1,
+    textOffset: 7,
+    images: [
+      { image: MemoryVessel1, width: 7, expanded: true },
+      { image: MemoryVessel0, width: 5 },
+      { image: MemoryVessel2, width: 7 },
+    ],
+  },
+  {
+    title: 'Palendrome',
+    firstColumn: 4,
+    textOffset: 2,
     images: [
       { image: Palendrome1, width: 7 },
       { image: Palendrome0, width: 5, expanded: true },
@@ -152,6 +159,7 @@ const projectDetails = [
   {
     title: 'Remenicent',
     firstColumn: 2,
+    textOffset: 3,
     images: [
       { image: Remenicent0, width: 7, expanded: true },
       { image: Remenicent1, width: 7 },
@@ -161,10 +169,11 @@ const projectDetails = [
   {
     title: 'Viriditas',
     firstColumn: 1,
+    textOffset: 7,
     images: [
-      { image: Viriditas0, width: 7, expanded: true },
       { image: Viriditas1, width: 7 },
       { image: Viriditas2, width: 7 },
+      { image: Viriditas0, width: 7, expanded: true },
     ],
   },
 ];
@@ -172,17 +181,19 @@ const projectDetails = [
 export default function Aferoj() {
   return (
     <>
-      {projectDetails.map(({ firstColumn, images, rows, title }, i) =>
-        rows ? (
-          <RellaxDouble key={i} title={title} rows={rows} />
-        ) : (
-          <RellaxSingle
-            key={i}
-            title={title}
-            firstColumn={firstColumn}
-            images={images}
-          />
-        )
+      {projectDetails.map(
+        ({ firstColumn, images, textOffset, rows, title }, i) =>
+          rows ? (
+            <RellaxDouble key={i} title={title} rows={rows} />
+          ) : (
+            <RellaxSingle
+              key={i}
+              title={title}
+              textOffset={textOffset}
+              firstColumn={firstColumn}
+              images={images}
+            />
+          )
       )}
     </>
   );

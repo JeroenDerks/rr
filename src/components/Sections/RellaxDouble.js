@@ -57,7 +57,7 @@ export default function RellaxDouble({ rows, title }) {
         zIndex={'model'}
         width={columnWidth * 1}
       >
-        <p
+        {/* <p
           style={{
             fontFamily: 'd-dindin-bold , Ariel, Helvetica, sans-serif',
             fontSize: window.innerWidth / 8,
@@ -68,7 +68,7 @@ export default function RellaxDouble({ rows, title }) {
           }}
         >
           {title}
-        </p>
+        </p> */}
       </Box>
       <Box
         position={'absolute'}

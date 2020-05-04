@@ -12,7 +12,7 @@ function App() {
   const handleResize = () =>
     window.innerWidth < 1200 ? (window.innerWidth / (12 / 5)) * 1.5 : 750;
 
-  const [selectedCategory, setCategory] = React.useState(2);
+  const [selectedCategory, setCategory] = React.useState(1);
   const [highlightedCategory, showCategory] = React.useState();
   const [minHeight, setMinHeight] = React.useState(handleResize);
 
@@ -41,6 +41,7 @@ function App() {
             setCategory={(id) => setCategory(id)}
             showCategory={(id) => showCategory(id)}
           />
+          <Box py={75} />
           {selectedCategory === 0 && <Lokoj />}
           {selectedCategory === 1 && <Aferoj />}
           {selectedCategory === 2 && <Bildoj />}
