@@ -1,8 +1,4 @@
 import React from 'react';
-// import ProjectSection from 'components/ProjectSection';
-// import ProjectSectionBox from 'components/ProjectSectionBox';
-// import ProjectSectionRellax from 'components/ProjectSectionRellax';
-// import ProjectSectionDouble from 'components/ProjectSectionDouble';
 
 import RellaxSingle from 'components/Sections/RellaxSingle';
 import RellaxDouble from 'components/Sections/RellaxDouble';
@@ -61,7 +57,8 @@ import WaitingWatchingWaiting4 from 'assets/images/compr_lokoj/WaitingWatchingWa
 const projectDetails = [
   {
     title: 'Second Fir',
-    firstColumn: 2,
+    textOffset: 2,
+    firstColumn: 1,
     images: [
       { image: SecondFir0, width: 7 },
       { image: SecondFir1, width: 7 },
@@ -71,6 +68,7 @@ const projectDetails = [
   },
   {
     title: 'Despeck',
+    textOffset: 5,
     rows: [
       {
         firstColumn: 1,
@@ -93,7 +91,8 @@ const projectDetails = [
   },
   {
     title: 'Displacement Inversion',
-    firstColumn: 3,
+    firstColumn: 0,
+    textOffset: 8,
     images: [
       { image: DisplacementInversion0, width: 5 },
       { image: DisplacementInversion2, width: 5 },
@@ -103,7 +102,8 @@ const projectDetails = [
   },
   {
     title: 'Fur',
-    firstColumn: 2,
+    firstColumn: 1,
+    textOffset: 6,
     images: [
       { image: Fur0, width: 5 },
       { image: Fur2, width: 7 },
@@ -113,34 +113,38 @@ const projectDetails = [
   },
   {
     title: 'Ghost Willow',
-    firstColumn: 1,
+    firstColumn: 2,
+    textOffset: 1,
     images: [
-      { image: GhostWillow0, width: 5 },
       { image: GhostWillow1, width: 7, expanded: true },
       { image: GhostWillow2, width: 7 },
+      { image: GhostWillow0, width: 5 },
     ],
   },
   {
     title: 'Memory Cell',
-    firstColumn: 2,
+    firstColumn: 0,
+    textOffset: 6,
     images: [
+      { image: MemoryCell1, width: 7, expanded: true },
       { image: MemoryCell2, width: 5 },
       { image: MemoryCell0, width: 7 },
-      { image: MemoryCell1, width: 7, expanded: true },
     ],
   },
   {
     title: 'No Title',
-    firstColumn: 3,
+    firstColumn: 2,
+    textOffset: 3,
     images: [
       { image: NoTitle0, width: 7 },
-      { image: NoTitle1, width: 7 },
-      { image: NoTitle2, width: 7, expanded: true },
+      { image: NoTitle2, width: 7 },
+      { image: NoTitle1, width: 7, expanded: true },
     ],
   },
   {
     title: "Pluto's Cave",
-    firstColumn: 1,
+    firstColumn: 0,
+    textOffset: 8,
     images: [
       { image: PlutosCave0, width: 7 },
       { image: PlutosCave3, width: 7 },
@@ -150,7 +154,8 @@ const projectDetails = [
   },
   {
     title: 'Put A Little On',
-    firstColumn: 3,
+    firstColumn: 0,
+    textOffset: 1,
     images: [
       { image: PutALittleOn0, width: 7, expanded: true },
       { image: PutALittleOn1, width: 7 },
@@ -160,7 +165,8 @@ const projectDetails = [
   },
   {
     title: 'Waiting Watching Waiting',
-    firstColumn: 1,
+    firstColumn: 0,
+    textOffset: 6,
     images: [
       { image: WaitingWatchingWaiting0, width: 7 },
       { image: WaitingWatchingWaiting1, width: 7 },
@@ -174,17 +180,24 @@ const projectDetails = [
 export default function Lokoj() {
   return (
     <>
-      {projectDetails.map(({ firstColumn, images, rows, title }, i) =>
-        rows ? (
-          <RellaxDouble key={i} title={title} rows={rows} />
-        ) : (
-          <RellaxSingle
-            key={i}
-            title={title}
-            firstColumn={firstColumn}
-            images={images}
-          />
-        )
+      {projectDetails.map(
+        ({ firstColumn, images, rows, textOffset, title }, i) =>
+          rows ? (
+            <RellaxDouble
+              key={i}
+              title={title}
+              rows={rows}
+              textOffset={textOffset}
+            />
+          ) : (
+            <RellaxSingle
+              key={i}
+              title={title}
+              textOffset={textOffset}
+              firstColumn={firstColumn}
+              images={images}
+            />
+          )
       )}
     </>
   );

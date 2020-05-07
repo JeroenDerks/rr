@@ -1,9 +1,15 @@
 import React from 'react';
-import { Box, Grid } from '@material-ui/core/';
+import { Box } from '@material-ui/core/';
 import { gridStyle } from 'styles/global';
+import { AppContext } from 'App';
+
 import 'styles/global.css';
 
 export default function SectionStroke({ images }) {
+  const {
+    state: { columnWidth },
+  } = React.useContext(AppContext);
+
   const [imageArr, setImages] = React.useState(images);
   const style = gridStyle();
 
@@ -13,16 +19,13 @@ export default function SectionStroke({ images }) {
     setImages([...imgs]);
   };
 
-  const columnWidth =
-    (window.innerWidth < 1200 ? window.innerWidth : 1200) / 12;
-
   return (
-    <Box className={style.grid}>
+    <Box className={style.grid} pt={20} style={{ boxSizing: 'border-box' }}>
       {imageArr.map(({ image, expanded }, i) => (
         <Box
           key={i}
           className={style.gridItem}
-          width={expanded === true ? columnWidth * 12 : columnWidth * 8}
+          width={expanded === true ? '100%' : columnWidth * 8}
           style={{ margin: '60px auto' }}
           onClick={() => setImg(i)}
         >
@@ -30,24 +33,5 @@ export default function SectionStroke({ images }) {
         </Box>
       ))}
     </Box>
-
-    // <Grid container spacing={0} className={style.grid} alignItems={'center'}>
-    //   {imageArr.map(({ img, expanded }, i) => (
-    //     <Grid
-    //       item
-    //       xs={expanded ? 12 : 8}
-    //       key={i}
-    //       className={style.gridItem}
-    //       style={{ padding: '1%', border: '1px solid coral' }}
-    //     >
-    //       <img
-    //         src={img}
-    //         alt={img}
-    //         className={style.image}
-    //         onClick={() => setImg(i)}
-    //       />
-    //     </Grid>
-    //   ))}
-    // </Grid>
   );
 }

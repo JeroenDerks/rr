@@ -1,5 +1,5 @@
 import React from 'react';
-import RellaxWrapper from 'react-rellax-wrapper';
+// import RellaxWrapper from 'react-rellax-wrapper';
 import { Box } from '@material-ui/core/';
 import { gridStyle } from 'styles/global';
 import { AppContext } from 'App';
@@ -8,14 +8,22 @@ import 'styles/global.css';
 export default function RellaxSingle({
   firstColumn,
   images,
-  title,
   textOffset,
+  title,
 }) {
   const {
-    state: { minHeight },
+    state: { columnWidth, minHeight },
   } = React.useContext(AppContext);
 
   const [imageArr, setImages] = React.useState(images);
+  const [heightMulitplier, setHeightMulitplier] = React.useState();
+
+  React.useEffect(() => {
+    imageArr.forEach((img) => {
+      img.expanded && setHeightMulitplier(img.width > 6 ? 0 : 20);
+    }); // eslint-disable-next-line
+  }, []);
+
   const style = gridStyle();
 
   const setImg = (i) => {
@@ -23,90 +31,47 @@ export default function RellaxSingle({
     imgs.forEach((img, _i) => {
       i === _i ? (img.expanded = true) : (img.expanded = false);
     });
+    console.log(imgs[i].width);
+    setHeightMulitplier(imgs[i].width > 6 ? 0 : 20);
     setImages([...imgs]);
   };
 
-  const columnWidth =
-    (window.innerWidth < 1200 ? window.innerWidth : 1200) / 12;
-
   return (
-    <>
-      {/* <Box className={style.grid}>
-        <p
-          style={{
-            fontFamily: 'd-dinregular, Ariel, Helvetica, sans-serif',
-            letterSpacing: 4,
-
-            fontSize: 12,
-          }}
-        >
-          <span style={{ textTransform: 'uppercase' }}>Location, year</span> -
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-      </Box> */}
-      <Box p={10}></Box>
+    <Box mt={20} pb={heightMulitplier} className={style.wrapper}>
       <Box
         className={style.grid}
-        id={title.replace(/\W+/g, '')}
-        // justifyContent="flex-end"
         style={{
           minHeight: minHeight,
           display: 'flex',
           alignItems: 'flex-start',
-          padding: '120px 0px',
-          // border: '1px solid coral',
+          padding: '120px 0px 0px',
         }}
       >
-        {firstColumn > 0 && (
-          <Box width={firstColumn * columnWidth}>
-            {/* <RellaxWrapper speed={(Math.random() - 0.5) * 6} center={true}>
-              <p
-                style={{
-                  fontFamily: 'd-dindin-bold , Ariel, Helvetica, sans-serif',
-                  fontSize: window.innerWidth / 8,
-                  lineHeight: 0.8,
-                  color: 'rgb(230, 221, 209)',
-                  opacity: 0.5,
-                }}
-              >
-                {title}
-              </p>
-            </RellaxWrapper> */}
-          </Box>
-        )}
+        {firstColumn > 0 && <Box width={firstColumn * columnWidth}></Box>}
         {images &&
-          images.map(({ expanded, image, speed, width }, i) => (
+          images.map(({ expanded, image, width }, i) => (
             <Box
               width={!expanded ? columnWidth : columnWidth * width}
               style={{
                 padding: width === 5 ? '1% 2% 2%' : '1%',
                 boxSizing: 'border-box',
                 display: 'inline-block',
-                // border: '1px solid grey',
               }}
               zIndex={'model'}
               className={style.gridItem}
               onClick={() => setImg(i)}
               key={i}
             >
-              <RellaxWrapper
-                speed={speed ? speed : (Math.random() - 0.5) * 3}
-                center={true}
-              >
-                <img src={image} alt={image} className={style.image} />
-              </RellaxWrapper>
+              <img src={image} alt={image} className={style.image} />
             </Box>
           ))}
       </Box>
       <Box>
         <Box
-          // position={'absolute'}
           style={{
-            marginTop: -minHeight * 0.5,
+            marginTop: -minHeight * 0.35,
             marginLeft: columnWidth * textOffset,
             padding: '1%',
-            // border: '1px solid pink',
           }}
           zIndex={'tooltip'}
           height={100}
@@ -116,25 +81,17 @@ export default function RellaxSingle({
             style={{
               fontFamily: 'd-dinregular, Ariel, Helvetica, sans-serif',
               letterSpacing: 4,
-              textTransform: 'uppercase',
               fontSize: 12,
             }}
           >
-            {title}
-          </p>
-          <p
-            style={{
-              fontFamily: 'd-dinregular, Ariel, Helvetica, sans-serif',
-              letterSpacing: 4,
-              fontSize: 12,
-            }}
-          >
+            <span style={{ textTransform: 'uppercase' }}>{title}, year</span>
+            <br />
+            <br />
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </Box>
       </Box>
-      <Box p={10}></Box>
-    </>
+    </Box>
   );
 }

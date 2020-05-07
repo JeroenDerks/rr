@@ -32,7 +32,7 @@ const projectDetails = [
     firstColumn: 1,
     images: [
       { image: circle_ice, width: 6 },
-      { image: circle_mineral, width: 6, expanded: true },
+      { image: circle_mineral, width: 6 },
       { image: circle_moss_mushroom, width: 6 },
       { image: circle_moss_landscape, width: 6 },
       { image: circle_moss, width: 6 },
@@ -42,7 +42,8 @@ const projectDetails = [
   {
     title: 'Memportreto',
     component: RellaxSingle,
-    firstColumn: 2,
+    firstColumn: 1,
+    textOffset: 4,
     images: [
       { image: drawing_memportreto0, width: 7, expanded: true },
       { image: drawing_memportreto1, width: 7 },
@@ -53,6 +54,7 @@ const projectDetails = [
   {
     title: 'Nokte',
     component: RellaxSingle,
+    textOffset: 6,
     firstColumn: 4,
     images: [{ image: drawing_nokte, width: 7, expanded: true }],
   },
@@ -76,12 +78,16 @@ export default function Bildoj() {
   return (
     <>
       {projectDetails.map(
-        ({ component: Component, firstColumn, images, title }, i) => (
+        (
+          { component: Component, firstColumn, images, textOffset, title },
+          i
+        ) => (
           <Component
             key={i}
             title={title}
             firstColumn={firstColumn}
             images={images}
+            textOffset={textOffset}
           />
         )
       )}
