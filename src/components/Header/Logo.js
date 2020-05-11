@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core/';
 import logo from 'assets/images/header_logo.png';
 import { gridStyle } from 'styles/global';
-
+import { AppContext } from 'App';
 require('assets/fonts/stylesheet.css');
 
 const logoStyle = {
@@ -11,7 +11,11 @@ const logoStyle = {
   boxSizing: 'border-box',
 };
 
-export default function Logo({ showCategory, setCategory }) {
+export default function Logo() {
+  const {
+    actions: { selectCategory, highligtCategory },
+  } = React.useContext(AppContext);
+
   const classes = gridStyle();
 
   return (
@@ -19,8 +23,8 @@ export default function Logo({ showCategory, setCategory }) {
       container
       spacing={0}
       className={classes.grid}
-      onMouseEnter={() => showCategory(null)}
-      onClick={() => setCategory()}
+      onMouseEnter={() => highligtCategory(4)}
+      onClick={() => selectCategory(4)}
     >
       <Grid item xs={4}></Grid>
       <Grid item xs={4}>

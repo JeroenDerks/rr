@@ -2,36 +2,47 @@ import React from 'react';
 import { Box } from '@material-ui/core/';
 import { gridStyle } from 'styles/global';
 import { AppContext } from 'App';
+
 import 'styles/global.css';
 
-export default function RellaxDouble({ rows, title }) {
+export default function RellaxDouble({ rows, title, textOffset }) {
   const {
-    state: { minHeight },
+    state: { columnWidth, minHeight },
   } = React.useContext(AppContext);
 
   const [imageRow, setRows] = React.useState(rows);
+  const [topOrBottom, setTopBottom] = React.useState('bottom');
+  const [orientation, setOrientation] = React.useState('portrait');
+
   const style = gridStyle();
 
   const setImg = (i, j) => {
     let arr = imageRow;
-    console.log(i, j);
-    console.log(arr[i].images[j].expanded);
-    console.log(!arr[i].images[j].expanded);
-
     arr.forEach((row) => row.images.forEach((ob) => (ob.expanded = false)));
-    arr[i].images[j].expanded = !arr[i].images[j].expanded;
+    arr[j].images[i].expanded = !arr[j].images[i].expanded;
     setRows([...arr]);
+    setTopBottom(j === 0 ? 'top' : 'bottom');
+    setOrientation(arr[j].images[i].width > 6 ? 'landscape' : 'portrait');
   };
 
-  const columnWidth =
-    (window.innerWidth < 1200 ? window.innerWidth : 1200) / 12;
-
   return (
-    <Box p={15}>
+    <Box
+      mt={30}
+      pb={topOrBottom === 'top' ? 10 : 0}
+      style={{ paddingLeft: columnWidth }}
+    >
       <Box
         display="flex"
         alignItems="flex-end"
-        style={{ minHeight: minHeight * 0.5 }}
+        className={style.transition}
+        style={{
+          minHeight:
+            topOrBottom === 'top' && orientation === 'portrait'
+              ? minHeight
+              : topOrBottom === 'top' && orientation === 'landscape'
+              ? minHeight * 0.7
+              : 0,
+        }}
       >
         {imageRow &&
           imageRow[0].images.map(({ image, width, expanded }, i) => (
@@ -44,7 +55,7 @@ export default function RellaxDouble({ rows, title }) {
                 zIndex: 100,
               }}
               className={style.gridItem}
-              onClick={() => setImg(0, i)}
+              onClick={() => setImg(i, 0)}
               key={i}
             >
               <img src={image} alt={image} className={style.image} />
@@ -53,48 +64,25 @@ export default function RellaxDouble({ rows, title }) {
       </Box>
       <Box
         position={'absolute'}
-        style={{ maxHeight: 0, marginTop: -200 }}
-        zIndex={'model'}
-        width={columnWidth * 1}
-      >
-        <p
-          style={{
-            fontFamily: 'd-dindin-bold , Ariel, Helvetica, sans-serif',
-            fontSize: window.innerWidth / 8,
-            lineHeight: 0.8,
-            color: 'rgb(230, 221, 209)',
-            opacity: 0.5,
-            margin: 0,
-          }}
-        >
-          {title}
-        </p>
-      </Box>
-      <Box
-        position={'absolute'}
-        style={{ maxHeight: 0, marginLeft: columnWidth * 2 }}
+        className={style.transition}
+        style={{
+          maxHeight: 0,
+          marginLeft: columnWidth * textOffset,
+          marginTop: topOrBottom === 'bottom' && -100,
+        }}
         zIndex={'tooltip'}
-        width={columnWidth * 4}
+        width={columnWidth * 3}
       >
         <p
           style={{
             fontFamily: 'd-dinregular, Ariel, Helvetica, sans-serif',
             letterSpacing: 4,
-            textTransform: 'uppercase',
             fontSize: 12,
-            pointerEvents: 'none',
           }}
         >
-          Location, year
-        </p>
-        <p
-          style={{
-            fontFamily: 'd-dinregular, Ariel, Helvetica, sans-serif',
-            letterSpacing: 4,
-            fontSize: 12,
-            pointerEvents: 'none',
-          }}
-        >
+          <span style={{ textTransform: 'uppercase' }}>{title}, year</span>
+          <br />
+          <br />
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
@@ -103,7 +91,7 @@ export default function RellaxDouble({ rows, title }) {
         display="flex"
         alignItems="flex-start"
         zIndex={'tooltip'}
-        style={{ minHeight: minHeight * 0.5 }}
+        style={{ minHeight: topOrBottom === 'bottom' ? minHeight : 120 }}
       >
         {imageRow &&
           imageRow[1].images.map(({ image, width, expanded }, i) => (
@@ -116,7 +104,7 @@ export default function RellaxDouble({ rows, title }) {
                 zIndex: 100,
               }}
               className={style.gridItem}
-              onClick={() => setImg(1, i)}
+              onClick={() => setImg(i, 1)}
               key={i}
             >
               <img src={image} alt={image} className={style.image} />

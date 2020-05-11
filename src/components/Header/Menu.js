@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core/';
 import { gridStyle } from 'styles/global';
+import { AppContext } from 'App';
 require('assets/fonts/stylesheet.css');
 
 const menuItems = [
@@ -30,12 +31,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Menu({ showCategory, setCategory }) {
+export default function Menu() {
+  const {
+    actions: { highligtCategory, resetHighlighting, selectCategory },
+  } = React.useContext(AppContext);
+
   const classes = gridStyle();
   const styles = useStyles();
 
   return (
-    <Grid container spacing={0} className={classes.grid}>
+    <Grid
+      container
+      spacing={0}
+      className={classes.grid}
+      onMouseLeave={() => resetHighlighting()}
+    >
       <Grid item xs={4}></Grid>
       {menuItems.map(({ title, subtitle }, i) => (
         <Grid
@@ -43,8 +53,8 @@ export default function Menu({ showCategory, setCategory }) {
           xs={1}
           key={i}
           className={styles.menu}
-          onClick={() => setCategory(i)}
-          onMouseEnter={() => showCategory(i)}
+          onClick={() => selectCategory(i)}
+          onMouseEnter={() => highligtCategory(i)}
         >
           <p
             style={{

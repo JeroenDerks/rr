@@ -14,7 +14,8 @@ import NRD_Ritzenstein_14 from 'assets/images/compr_artist/NRD_Ritzenstein_14.jp
 const projectDetails = [
   {
     title: 'The Artist',
-    firstColumn: 2,
+    firstColumn: 1,
+    textOffset: 4,
     images: [
       { image: NRD_Ritzenstein_11, width: 7 },
       { image: NRD_Ritzenstein_12, width: 7 },
@@ -27,12 +28,13 @@ const projectDetails = [
 export default function Artist() {
   return (
     <>
-      {projectDetails.map(({ firstColumn, images, title }, i) => (
+      {projectDetails.map(({ firstColumn, images, textOffset, title }, i) => (
         <RellaxSingle
           key={i}
           title={title}
           firstColumn={firstColumn}
           images={images}
+          textOffset={textOffset}
         />
       ))}
     </>
