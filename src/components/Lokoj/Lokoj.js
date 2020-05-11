@@ -1,7 +1,6 @@
 import React from 'react';
 
-import RellaxSingle from 'components/Sections/RellaxSingle';
-import RellaxDouble from 'components/Sections/RellaxDouble';
+import RellaxNoMaterialUI from 'components/Sections/RellaxNoMaterialUI';
 
 import SecondFir0 from 'assets/images/compr_lokoj/2ndFir0.jpg';
 import SecondFir1 from 'assets/images/compr_lokoj/2ndFir1.jpg';
@@ -54,37 +53,52 @@ import WaitingWatchingWaiting2 from 'assets/images/compr_lokoj/WaitingWatchingWa
 import WaitingWatchingWaiting3 from 'assets/images/compr_lokoj/WaitingWatchingWaiting3.jpg';
 import WaitingWatchingWaiting4 from 'assets/images/compr_lokoj/WaitingWatchingWaiting4.jpg';
 
+const getMargin = () => {
+  const size = 300;
+  const margin =
+    parseInt(Math.random() * size) +
+    'px ' +
+    parseInt(Math.random() * size) +
+    'px ' +
+    parseInt(Math.random() * size) +
+    'px ' +
+    parseInt(Math.random() * size) +
+    'px ';
+  console.log(margin);
+  return margin;
+};
+
 const projectDetails = [
   {
     title: 'Second Fir',
     textOffset: 2,
     firstColumn: 1,
     images: [
-      { image: SecondFir0, width: 7 },
-      { image: SecondFir1, width: 7 },
-      { image: SecondFir2, width: 7 },
-      { image: SecondFir3, width: 7, expanded: true },
+      { image: SecondFir0, margin: getMargin(), width: 7 },
+      { image: SecondFir1, margin: getMargin(), width: 7 },
+      { image: SecondFir2, margin: getMargin(), width: 7 },
+      { image: SecondFir3, margin: getMargin(), width: 7, expanded: true },
     ],
   },
   {
     title: 'Despeck',
-    textOffset: 5,
+    textOffset: 0,
     rows: [
       {
         firstColumn: 1,
         images: [
-          { image: Despeck3, width: 7 },
-          { image: Despeck1, width: 7 },
-          { image: Despeck5, width: 7 },
+          { image: Despeck3, margin: getMargin(), width: 7 },
+          { image: Despeck1, margin: getMargin(), width: 7 },
+          { image: Despeck5, margin: getMargin(), width: 7 },
         ],
       },
       {
         firstColumn: 3,
         images: [
-          { image: Despeck6, width: 5 },
-          { image: Despeck0, width: 5 },
-          { image: Despeck2, width: 5, expanded: true },
-          { image: Despeck4, width: 5 },
+          { image: Despeck6, margin: getMargin(), width: 5 },
+          { image: Despeck0, margin: getMargin(), width: 5 },
+          { image: Despeck2, margin: getMargin(), width: 5, expanded: true },
+          { image: Despeck4, margin: getMargin(), width: 5 },
         ],
       },
     ],
@@ -94,10 +108,15 @@ const projectDetails = [
     firstColumn: 0,
     textOffset: 8,
     images: [
-      { image: DisplacementInversion0, width: 5 },
-      { image: DisplacementInversion2, width: 5 },
-      { image: DisplacementInversion3, width: 5 },
-      { image: DisplacementInversion1, width: 5, expanded: true },
+      { image: DisplacementInversion0, margin: getMargin(), width: 5 },
+      { image: DisplacementInversion2, margin: getMargin(), width: 5 },
+      { image: DisplacementInversion3, margin: getMargin(), width: 5 },
+      {
+        image: DisplacementInversion1,
+        margin: getMargin(),
+        width: 5,
+        expanded: true,
+      },
     ],
   },
   {
@@ -105,10 +124,10 @@ const projectDetails = [
     firstColumn: 1,
     textOffset: 6,
     images: [
-      { image: Fur0, width: 5 },
-      { image: Fur2, width: 7 },
-      { image: Fur3, width: 7 },
-      { image: Fur1, width: 7, expanded: true },
+      { image: Fur0, margin: getMargin(), width: 5 },
+      { image: Fur2, margin: getMargin(), width: 7 },
+      { image: Fur3, margin: getMargin(), width: 7 },
+      { image: Fur1, margin: getMargin(), width: 7, expanded: true },
     ],
   },
   {
@@ -116,9 +135,9 @@ const projectDetails = [
     firstColumn: 2,
     textOffset: 1,
     images: [
-      { image: GhostWillow1, width: 7, expanded: true },
-      { image: GhostWillow2, width: 7 },
-      { image: GhostWillow0, width: 5 },
+      { image: GhostWillow1, margin: getMargin(), width: 7, expanded: true },
+      { image: GhostWillow2, margin: getMargin(), width: 7 },
+      { image: GhostWillow0, margin: getMargin(), width: 5 },
     ],
   },
   {
@@ -126,9 +145,9 @@ const projectDetails = [
     firstColumn: 0,
     textOffset: 6,
     images: [
-      { image: MemoryCell1, width: 7, expanded: true },
-      { image: MemoryCell2, width: 5 },
-      { image: MemoryCell0, width: 7 },
+      { image: MemoryCell1, margin: getMargin(), width: 7, expanded: true },
+      { image: MemoryCell2, margin: getMargin(), width: 5 },
+      { image: MemoryCell0, margin: getMargin(), width: 7 },
     ],
   },
   {
@@ -136,9 +155,9 @@ const projectDetails = [
     firstColumn: 2,
     textOffset: 3,
     images: [
-      { image: NoTitle0, width: 7 },
-      { image: NoTitle2, width: 7 },
-      { image: NoTitle1, width: 7, expanded: true },
+      { image: NoTitle0, margin: getMargin(), width: 7 },
+      { image: NoTitle2, margin: getMargin(), width: 7 },
+      { image: NoTitle1, margin: getMargin(), width: 7, expanded: true },
     ],
   },
   {
@@ -146,10 +165,10 @@ const projectDetails = [
     firstColumn: 0,
     textOffset: 8,
     images: [
-      { image: PlutosCave0, width: 7 },
-      { image: PlutosCave3, width: 7 },
-      { image: PlutosCave1, width: 7, expanded: true },
-      { image: PlutosCave2, width: 5 },
+      { image: PlutosCave0, margin: getMargin(), width: 7 },
+      { image: PlutosCave3, margin: getMargin(), width: 7 },
+      { image: PlutosCave1, margin: getMargin(), width: 7, expanded: true },
+      { image: PlutosCave2, margin: getMargin(), width: 5 },
     ],
   },
   {
@@ -157,10 +176,10 @@ const projectDetails = [
     firstColumn: 0,
     textOffset: 1,
     images: [
-      { image: PutALittleOn0, width: 7, expanded: true },
-      { image: PutALittleOn1, width: 7 },
-      { image: PutALittleOn2, width: 7 },
-      { image: PutALittleOn3, width: 7 },
+      { image: PutALittleOn0, margin: getMargin(), width: 7, expanded: true },
+      { image: PutALittleOn1, margin: getMargin(), width: 7 },
+      { image: PutALittleOn2, margin: getMargin(), width: 7 },
+      { image: PutALittleOn3, margin: getMargin(), width: 7 },
     ],
   },
   {
@@ -168,11 +187,16 @@ const projectDetails = [
     firstColumn: 0,
     textOffset: 6,
     images: [
-      { image: WaitingWatchingWaiting0, width: 7 },
-      { image: WaitingWatchingWaiting1, width: 7 },
-      { image: WaitingWatchingWaiting2, width: 7 },
-      { image: WaitingWatchingWaiting3, width: 7, expanded: true },
-      { image: WaitingWatchingWaiting4, width: 7 },
+      { image: WaitingWatchingWaiting0, margin: getMargin(), width: 7 },
+      { image: WaitingWatchingWaiting1, margin: getMargin(), width: 7 },
+      { image: WaitingWatchingWaiting2, margin: getMargin(), width: 7 },
+      {
+        image: WaitingWatchingWaiting3,
+        margin: getMargin(),
+        width: 7,
+        expanded: true,
+      },
+      { image: WaitingWatchingWaiting4, margin: getMargin(), width: 7 },
     ],
   },
 ];
@@ -181,23 +205,16 @@ export default function Lokoj() {
   return (
     <>
       {projectDetails.map(
-        ({ firstColumn, images, rows, textOffset, title }, i) =>
-          rows ? (
-            <RellaxDouble
-              key={i}
-              title={title}
-              rows={rows}
-              textOffset={textOffset}
-            />
-          ) : (
-            <RellaxSingle
-              key={i}
-              title={title}
-              textOffset={textOffset}
-              firstColumn={firstColumn}
-              images={images}
-            />
-          )
+        ({ firstColumn, images, rows, textOffset, title }, i) => (
+          <RellaxNoMaterialUI
+            key={i}
+            title={title}
+            textOffset={textOffset}
+            firstColumn={firstColumn}
+            images={images}
+            rows={rows}
+          />
+        )
       )}
     </>
   );

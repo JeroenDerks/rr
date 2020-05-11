@@ -1,60 +1,77 @@
 import React from 'react';
 import { RellaxWrapper } from 'react-rellax-wrapper';
-import { Box } from '@material-ui/core/';
 import { gridStyle } from 'styles/global';
-import { AppContext } from 'App';
 import 'styles/global.css';
 
-export default function RellaxNoMaterialUI({
-  firstColumn,
-  images,
-  title,
-  i,
-  textOffset,
-}) {
-  const {
-    state: { minHeight },
-  } = React.useContext(AppContext);
+export default function RellaxNoMaterialUI({ images, rows, textOffset }) {
+  let imgArr = [];
+  if (rows) {
+    rows.forEach((row) => row.images.forEach((img) => imgArr.push(img)));
+    console.log(imgArr);
+  }
+  const [imageArr, setImages] = React.useState(rows ? imgArr : images);
+  const style = gridStyle();
 
-  const [imageArr, setImages] = React.useState(images);
-  const [rows, setRows] = React.useState(new Array(10).fill('null'));
-  const [columns, setColumns] = React.useState(new Array(10).fill(null));
+  const setImg = (i) => {
+    let imgs = imageArr;
+    imgs.forEach((img, _i) => {
+      i === _i ? (img.expanded = true) : (img.expanded = false);
+    });
+    setImages([...imgs]);
+  };
 
-  console.log('nomateiral ui');
   return (
-    <>
-      {rows.map((i) => (
-        <div
-          key={i}
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            height: '75vh',
-            width: '100%',
-            justifyContent: 'space-between',
-            border: '1px solid grey',
-            paddingTop: '15%',
-          }}
-          className={'wrapper' + i}
-        >
-          {columns &&
-            columns.map((j) => (
-              <RellaxWrapper
-                speed={(Math.random() - 0.5) * 10}
-                center={true}
-                key={j}
+    <div
+      style={{
+        height: '100vh',
+        width: '100%',
+        boxSizing: 'border-box',
+        position: 'relative',
+        pointerEvents: 'none',
+        paddingLeft: textOffset * 5 + '%',
+      }}
+    >
+      {imageArr &&
+        imageArr.map(({ expanded, image, margin, width }, i) => (
+          <div
+            style={{
+              height: '100%',
+              position: 'absolute',
+              zIndex: expanded ? 100 : 0,
+              pointerEvents: 'none',
+              boxSizing: 'border-box',
+              padding: margin,
+            }}
+            key={i}
+          >
+            <RellaxWrapper
+              speed={(Math.random() - 0.5) * 4}
+              center={true}
+              style={{ pointerEvents: 'none' }}
+            >
+              <div
+                // className={style.transition}
+                style={{
+                  width: width * 70,
+                  pointerEvents: 'all',
+                }}
+                onClick={() => setImg(i)}
               >
-                <div
+                <img
+                  src={image}
+                  alt={image}
                   style={{
-                    width: '100px',
-                    height: '400px',
-                    border: '1px solid coral',
+                    width: '100%',
+                    height: '100%',
+                    boxShadow:
+                      width !== 6 && '5px 5px 10px 5px rgba(0,0,0,0.27)',
+                    cursor: 'pointer',
                   }}
-                ></div>
-              </RellaxWrapper>
-            ))}
-        </div>
-      ))}
-    </>
+                />
+              </div>
+            </RellaxWrapper>
+          </div>
+        ))}
+    </div>
   );
 }

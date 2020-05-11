@@ -35,7 +35,7 @@ function App() {
   const classes = gridStyle();
 
   React.useEffect(() => {
-    setColor(selectedCategory); // eslint-disable-next-line
+    setColor(1); // eslint-disable-next-line
   }, []);
 
   React.useEffect(() => {
@@ -51,16 +51,18 @@ function App() {
   };
 
   const highligtCategory = (i) => {
-    setColor(i);
+    // setColor(i);
   };
 
   const resetHighlighting = () => {
-    setColor(selectedCategory);
+    // setColor(selectedCategory);
   };
 
   const setColor = (i) => {
     setBgColor(defaultColors[i].bg);
   };
+
+  const pt = 36;
 
   return (
     <AppContext.Provider
@@ -80,10 +82,26 @@ function App() {
           <Header />
           <Box />
           <OpeningTitle />
-          {selectedCategory === 0 && <Lokoj />}
-          {selectedCategory === 1 && <Aferoj />}
-          {selectedCategory === 2 && <Bildoj />}
-          {selectedCategory === 3 && <Artist />}
+          {selectedCategory === 0 && (
+            <Box pt={pt}>
+              <Lokoj />
+            </Box>
+          )}
+          {selectedCategory === 1 && (
+            <Box pt={pt}>
+              <Aferoj />
+            </Box>
+          )}
+          {selectedCategory === 2 && (
+            <Box pt={pt}>
+              <Bildoj />
+            </Box>
+          )}
+          {selectedCategory === 3 && (
+            <Box pt={pt}>
+              <Artist />
+            </Box>
+          )}
           {selectedCategory === 4 && <OpeningGraphic />}
         </Box>
       </Box>

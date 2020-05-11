@@ -2,11 +2,11 @@ import React from 'react';
 // import ProjectSection from 'components/ProjectSection';
 // import ProjectSectionDouble from 'components/ProjectSectionDouble';
 
-import RellaxSingle from 'components/Sections/RellaxSingle';
+// import RellaxSingle from 'components/Sections/RellaxSingle';
 // import RellaxVanilla from 'components/Sections/RellaxVanilla';
 
-import RellaxDouble from 'components/Sections/RellaxDouble';
-// import RellaxNoMaterialUI from 'components/Sections/RellaxNoMaterialUI';
+// import RellaxDouble from 'components/Sections/RellaxDouble';
+import RellaxNoMaterialUI from 'components/Sections/RellaxNoMaterialUI';
 
 import Transformer0 from 'assets/images/compr_aferoj/Transformer0.jpg';
 import Transformer1 from 'assets/images/compr_aferoj/Transformer1.jpg';
@@ -55,15 +55,29 @@ import Viriditas0 from 'assets/images/compr_aferoj/Viriditas0.jpg';
 import Viriditas1 from 'assets/images/compr_aferoj/Viriditas1.jpg';
 import Viriditas2 from 'assets/images/compr_aferoj/Viriditas2.jpg';
 
+const getMargin = () => {
+  const size = 300;
+  const margin =
+    parseInt(Math.random() * size) +
+    'px ' +
+    parseInt(Math.random() * size) +
+    'px ' +
+    parseInt(Math.random() * size) +
+    'px ' +
+    parseInt(Math.random() * size) +
+    'px ';
+  return margin;
+};
+
 const projectDetails = [
   {
     title: 'Transformer',
     firstColumn: 1,
     textOffset: 8,
     images: [
-      { image: Transformer1, width: 7 },
-      { image: Transformer2, width: 5 },
-      { image: Transformer0, width: 5, expanded: true },
+      { image: Transformer0, margin: getMargin(), width: 5, expanded: true },
+      { image: Transformer1, margin: getMargin(), width: 7 },
+      { image: Transformer2, margin: getMargin(), width: 5 },
     ],
   },
   {
@@ -71,11 +85,16 @@ const projectDetails = [
     firstColumn: 0,
     textOffset: 2,
     images: [
-      { image: NRD_Reitzenstein0, width: 7 },
-      { image: NRD_Reitzenstein1, width: 7 },
-      { image: NRD_Reitzenstein2, width: 7 },
-      { image: NRD_Reitzenstein3, width: 7, expanded: true },
-      { image: NRD_Reitzenstein4, width: 7 },
+      { image: NRD_Reitzenstein0, margin: getMargin(), width: 7 },
+      { image: NRD_Reitzenstein1, margin: getMargin(), width: 7 },
+      { image: NRD_Reitzenstein2, margin: getMargin(), width: 7 },
+      {
+        image: NRD_Reitzenstein3,
+        margin: getMargin(),
+        width: 7,
+        expanded: true,
+      },
+      { image: NRD_Reitzenstein4, margin: getMargin(), width: 7 },
     ],
   },
   {
@@ -83,8 +102,8 @@ const projectDetails = [
     firstColumn: 1,
     textOffset: 7,
     images: [
-      { image: CrossCut0, width: 7 },
-      { image: CrossCut1, width: 5, expanded: true },
+      { image: CrossCut0, margin: getMargin(), width: 7 },
+      { image: CrossCut1, margin: getMargin(), width: 5, expanded: true },
     ],
   },
   {
@@ -92,9 +111,14 @@ const projectDetails = [
     firstColumn: 2,
     textOffset: 7,
     images: [
-      { image: DefenseDefiance0, width: 5 },
-      { image: DefenseDefiance1, width: 7 },
-      { image: DefenseDefiance2, width: 7, expanded: true },
+      { image: DefenseDefiance0, margin: getMargin(), width: 5 },
+      { image: DefenseDefiance1, margin: getMargin(), width: 7 },
+      {
+        image: DefenseDefiance2,
+        margin: getMargin(),
+        width: 7,
+        expanded: true,
+      },
     ],
   },
   {
@@ -104,21 +128,21 @@ const projectDetails = [
       {
         firstColumn: 1,
         images: [
-          { image: LostWood7, width: 7 },
-          { image: LostWood6, width: 7 },
-          { image: LostWood1, width: 5 },
-          { image: LostWood2, width: 7 },
+          { image: LostWood7, margin: getMargin(), width: 7 },
+          { image: LostWood6, margin: getMargin(), width: 7 },
+          { image: LostWood1, margin: getMargin(), width: 5 },
+          { image: LostWood2, margin: getMargin(), width: 7 },
         ],
       },
       {
         firstColumn: 0,
         images: [
-          { image: LostWood0, width: 5 },
-          { image: LostWood4, width: 5 },
-          { image: LostWood5, width: 5, expanded: true },
-          { image: LostWood8, width: 5 },
-          { image: LostWood3, width: 5 },
-          { image: LostWood9, width: 5 },
+          { image: LostWood0, margin: getMargin(), width: 5 },
+          { image: LostWood4, margin: getMargin(), width: 5 },
+          { image: LostWood5, margin: getMargin(), width: 5, expanded: true },
+          { image: LostWood8, margin: getMargin(), width: 5 },
+          { image: LostWood3, margin: getMargin(), width: 5 },
+          { image: LostWood9, margin: getMargin(), width: 5 },
         ],
       },
     ],
@@ -128,9 +152,9 @@ const projectDetails = [
     firstColumn: 2,
     textOffset: 0,
     images: [
-      { image: MemoryPhantom1, width: 7 },
-      { image: MemoryPhantom0, width: 5, expanded: true },
-      { image: MemoryPhantom2, width: 5 },
+      { image: MemoryPhantom1, margin: getMargin(), width: 7 },
+      { image: MemoryPhantom0, margin: getMargin(), width: 5, expanded: true },
+      { image: MemoryPhantom2, margin: getMargin(), width: 5 },
     ],
   },
   {
@@ -138,9 +162,9 @@ const projectDetails = [
     firstColumn: 1,
     textOffset: 7,
     images: [
-      { image: MemoryVessel1, width: 7, expanded: true },
-      { image: MemoryVessel0, width: 5 },
-      { image: MemoryVessel2, width: 7 },
+      { image: MemoryVessel1, margin: getMargin(), width: 7, expanded: true },
+      { image: MemoryVessel0, margin: getMargin(), width: 5 },
+      { image: MemoryVessel2, margin: getMargin(), width: 7 },
     ],
   },
   {
@@ -148,8 +172,8 @@ const projectDetails = [
     firstColumn: 3,
     textOffset: 1,
     images: [
-      { image: Palendrome1, width: 7 },
-      { image: Palendrome0, width: 5, expanded: true },
+      { image: Palendrome1, margin: getMargin(), width: 7 },
+      { image: Palendrome0, margin: getMargin(), width: 5, expanded: true },
     ],
   },
   {
@@ -157,9 +181,9 @@ const projectDetails = [
     firstColumn: 2,
     textOffset: 3,
     images: [
-      { image: Remenicent0, width: 7, expanded: true },
-      { image: Remenicent1, width: 7 },
-      { image: Remenicent2, width: 7 },
+      { image: Remenicent0, margin: getMargin(), width: 7, expanded: true },
+      { image: Remenicent1, margin: getMargin(), width: 7 },
+      { image: Remenicent2, margin: getMargin(), width: 7 },
     ],
   },
   {
@@ -167,9 +191,9 @@ const projectDetails = [
     firstColumn: 1,
     textOffset: 7,
     images: [
-      { image: Viriditas1, width: 7 },
-      { image: Viriditas2, width: 7 },
-      { image: Viriditas0, width: 7, expanded: true },
+      { image: Viriditas1, margin: getMargin(), width: 7 },
+      { image: Viriditas2, margin: getMargin(), width: 7 },
+      { image: Viriditas0, margin: getMargin(), width: 7, expanded: true },
     ],
   },
 ];
@@ -179,15 +203,17 @@ export default function Aferoj() {
     <>
       {projectDetails.map(
         ({ firstColumn, images, textOffset, rows, title }, i) =>
-          rows ? (
-            <RellaxDouble
-              key={i}
-              title={title}
-              rows={rows}
-              textOffset={textOffset}
-            />
-          ) : (
-            <RellaxSingle
+          !rows && (
+            // (
+            //   <RellaxDouble
+            //     key={i}
+            //     title={title}
+            //     rows={rows}
+            //     textOffset={textOffset}
+            //   />
+            // ) : (
+
+            <RellaxNoMaterialUI
               key={i}
               title={title}
               textOffset={textOffset}
