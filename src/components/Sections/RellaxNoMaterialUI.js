@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { RellaxWrapper } from 'react-rellax-wrapper';
 import { Parallax } from 'react-scroll-parallax';
-
+import { useController, withController } from 'react-scroll-parallax';
 import { gridStyle } from 'styles/global';
 import { makeStyles } from '@material-ui/core/';
 import _ from 'lodash';
@@ -10,20 +10,20 @@ import 'styles/global.css';
 
 const sizeStyle = makeStyles({
   width5: {
-    width: 200,
+    width: '10%',
     pointerEvents: 'all',
     transition: 'all .5s',
   },
   width5Expanded: {
-    width: 400,
+    width: '40%',
   },
   width7: {
-    width: 300,
+    width: '15%',
     pointerEvents: 'all',
     transition: 'all .5s',
   },
   width7Expanded: {
-    width: 600,
+    width: '60%',
   },
 });
 
@@ -46,6 +46,14 @@ export default function RellaxNoMaterialUI({ images, rows, textOffset }) {
     setImages([...imgs]);
   };
 
+  const { parallaxController } = useController();
+
+  React.useLayoutEffect(() => {
+    const handler = () => parallaxController.update();
+    window.addEventListener('load', handler);
+    return () => window.removeEventListener('load', handler);
+  }, [parallaxController]);
+
   return (
     <div
       style={{
@@ -63,10 +71,12 @@ export default function RellaxNoMaterialUI({ images, rows, textOffset }) {
             style={{
               height: '100%',
               position: 'absolute',
-              zIndex: expanded ? 0 : 100,
+              transition: 'z-index .5s',
+              zIndex:
+                expanded === false ? 0 : expanded === undefined ? 100 : 50,
               pointerEvents: 'none',
               boxSizing: 'border-box',
-              padding: margin,
+              margin: margin,
             }}
             key={i}
           >
@@ -75,15 +85,11 @@ export default function RellaxNoMaterialUI({ images, rows, textOffset }) {
                 className={style.transition}
                 onClick={() => setImg(i)}
                 style={{
-                  width: expanded === true ? width * 80 : width * 40,
+                  transformOrigin: 'center',
+                  transform: expanded === true && 'scale3d(3,3,1)',
+                  width: width * 25,
                   pointerEvents: 'all',
                 }}
-                className={classnames({
-                  [classes.width5]: width === 5,
-                  [classes.width5Expanded]: width === 5 && expanded === true,
-                  [classes.width7]: width === 7,
-                  [classes.width7Expanded]: width === 7 && expanded === true,
-                })}
               >
                 <img
                   src={image}

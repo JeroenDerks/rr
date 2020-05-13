@@ -54,15 +54,15 @@ import WaitingWatchingWaiting3 from 'assets/images/compr_lokoj/WaitingWatchingWa
 import WaitingWatchingWaiting4 from 'assets/images/compr_lokoj/WaitingWatchingWaiting4.jpg';
 
 const getMargin = () => {
-  const size = 300;
+  const size = 200;
   const margin =
-    parseInt(Math.random() * size) +
+    parseInt((Math.random() - 0.5) * size) +
     'px ' +
-    parseInt(Math.random() * size) +
+    parseInt((Math.random() - 0.5) * size * 2) +
     'px ' +
-    parseInt(Math.random() * size) +
+    parseInt((Math.random() - 0.5) * size) +
     'px ' +
-    parseInt(Math.random() * size) +
+    parseInt(Math.random() * size * 2) +
     'px ';
   console.log(margin);
   return margin;
@@ -292,14 +292,16 @@ export default function Lokoj() {
     <>
       {projectDetails.map(
         ({ firstColumn, images, rows, textOffset, title }, i) => (
-          <RellaxNoMaterialUI
-            key={i}
-            title={title}
-            textOffset={textOffset}
-            firstColumn={firstColumn}
-            images={images}
-            rows={rows}
-          />
+          <React.Fragment key={i}>
+            <RellaxNoMaterialUI
+              title={title}
+              textOffset={textOffset}
+              firstColumn={firstColumn}
+              images={images}
+              rows={rows}
+            />
+            {console.log(title, images)}
+          </React.Fragment>
         )
       )}
     </>
