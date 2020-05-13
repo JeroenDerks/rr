@@ -6,14 +6,11 @@ export default function OpeningGraphic() {
 
   const SCENE1 = 400;
   React.useEffect(() => {
-    window.addEventListener('scroll', () => setY(window.pageYOffset));
-
-    return () => {
-      window.removeEventListener('scroll', () => setY());
-    };
+    // window.addEventListener('scroll', () => setY(window.pageYOffset));
+    // return () => {
+    //   window.removeEventListener('scroll', () => setY());
+    // };
   }, []);
-
-  console.log((SCENE1 - scrollY) / SCENE1);
 
   return (
     <div

@@ -13,11 +13,20 @@ import { Box } from '@material-ui/core/';
 
 export const AppContext = React.createContext();
 
+// const defaultColors = [
+//   { bg: '#c8d3b9', border: '#e2eadf' }, // Lokoj
+//   { bg: '#dbccb0', border: '#e6ddd1' }, // Aferoj
+//   { bg: '#d0d6db', border: '#ece2de' }, // Bildoj
+//   { bg: '#edcbbd', border: '#fbdedc' }, // Artist
+//   { bg: '#ffffff', border: '#eeeeee' }, // Landing page
+// ];
+
+// Colors Lorne
 const defaultColors = [
-  { bg: '#c8d3b9', border: '#e2eadf' }, // Lokoj
-  { bg: '#dbccb0', border: '#e6ddd1' }, // Aferoj
-  { bg: '#d0d6db', border: '#ece2de' }, // Bildoj
-  { bg: '#edcbbd', border: '#fbdedc' }, // Artist
+  { bg: '#c8d3b9', border: '#e8eed4' }, // Lokoj
+  { bg: '#dbccb0', border: '#cfc1a4' }, // Aferoj
+  { bg: '#d0d6db', border: '#d0c1c6' }, // Bildoj
+  { bg: '#edcbbd', border: '#f5b596' }, // Artist
   { bg: '#ffffff', border: '#eeeeee' }, // Landing page
 ];
 
@@ -25,7 +34,7 @@ function App() {
   const handleResize = () =>
     window.innerWidth < 1200 ? (window.innerWidth / (12 / 5)) * 1.5 : 750;
 
-  const [selectedCategory, setCategory] = React.useState(4);
+  const [selectedCategory, setCategory] = React.useState(0);
   const [minHeight, setMinHeight] = React.useState(handleResize);
   const [backgroundColor, setBgColor] = React.useState();
 
@@ -35,7 +44,7 @@ function App() {
   const classes = gridStyle();
 
   React.useEffect(() => {
-    setColor(1); // eslint-disable-next-line
+    setColor(0); // eslint-disable-next-line
   }, []);
 
   React.useEffect(() => {
@@ -51,11 +60,11 @@ function App() {
   };
 
   const highligtCategory = (i) => {
-    // setColor(i);
+    setColor(i);
   };
 
   const resetHighlighting = () => {
-    // setColor(selectedCategory);
+    setColor(selectedCategory);
   };
 
   const setColor = (i) => {

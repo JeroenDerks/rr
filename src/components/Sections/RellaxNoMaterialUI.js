@@ -1,7 +1,31 @@
 import React from 'react';
+import classnames from 'classnames';
 import { RellaxWrapper } from 'react-rellax-wrapper';
+import { Parallax } from 'react-scroll-parallax';
+
 import { gridStyle } from 'styles/global';
+import { makeStyles } from '@material-ui/core/';
+import _ from 'lodash';
 import 'styles/global.css';
+
+const sizeStyle = makeStyles({
+  width5: {
+    width: 200,
+    pointerEvents: 'all',
+    transition: 'all .5s',
+  },
+  width5Expanded: {
+    width: 400,
+  },
+  width7: {
+    width: 300,
+    pointerEvents: 'all',
+    transition: 'all .5s',
+  },
+  width7Expanded: {
+    width: 600,
+  },
+});
 
 export default function RellaxNoMaterialUI({ images, rows, textOffset }) {
   let imgArr = [];
@@ -11,11 +35,13 @@ export default function RellaxNoMaterialUI({ images, rows, textOffset }) {
   }
   const [imageArr, setImages] = React.useState(rows ? imgArr : images);
   const style = gridStyle();
+  const classes = sizeStyle();
 
   const setImg = (i) => {
-    let imgs = imageArr;
+    let imgs = _.cloneDeep(imageArr);
+
     imgs.forEach((img, _i) => {
-      i === _i ? (img.expanded = true) : (img.expanded = false);
+      i === _i ? (img.expanded = !img.expanded) : (img.expanded = false);
     });
     setImages([...imgs]);
   };
@@ -32,30 +58,32 @@ export default function RellaxNoMaterialUI({ images, rows, textOffset }) {
       }}
     >
       {imageArr &&
-        imageArr.map(({ expanded, image, margin, width }, i) => (
+        imageArr.map(({ expanded, image, margin, width, y }, i) => (
           <div
             style={{
               height: '100%',
               position: 'absolute',
-              zIndex: expanded ? 100 : 0,
+              zIndex: expanded ? 0 : 100,
               pointerEvents: 'none',
               boxSizing: 'border-box',
               padding: margin,
             }}
             key={i}
           >
-            <RellaxWrapper
-              speed={(Math.random() - 0.5) * 4}
-              center={true}
-              style={{ pointerEvents: 'none' }}
-            >
+            <Parallax y={y}>
               <div
-                // className={style.transition}
+                className={style.transition}
+                onClick={() => setImg(i)}
                 style={{
-                  width: width * 70,
+                  width: expanded === true ? width * 80 : width * 40,
                   pointerEvents: 'all',
                 }}
-                onClick={() => setImg(i)}
+                className={classnames({
+                  [classes.width5]: width === 5,
+                  [classes.width5Expanded]: width === 5 && expanded === true,
+                  [classes.width7]: width === 7,
+                  [classes.width7Expanded]: width === 7 && expanded === true,
+                })}
               >
                 <img
                   src={image}
@@ -69,7 +97,7 @@ export default function RellaxNoMaterialUI({ images, rows, textOffset }) {
                   }}
                 />
               </div>
-            </RellaxWrapper>
+            </Parallax>
           </div>
         ))}
     </div>

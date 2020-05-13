@@ -68,16 +68,29 @@ const getMargin = () => {
   return margin;
 };
 
+const getY = () => {
+  return [
+    (Math.random() - 0.5) * 400 + 'px',
+    (Math.random() - 0.5) * 400 + 'px',
+  ];
+};
+
 const projectDetails = [
   {
     title: 'Second Fir',
     textOffset: 2,
     firstColumn: 1,
     images: [
-      { image: SecondFir0, margin: getMargin(), width: 7 },
-      { image: SecondFir1, margin: getMargin(), width: 7 },
-      { image: SecondFir2, margin: getMargin(), width: 7 },
-      { image: SecondFir3, margin: getMargin(), width: 7, expanded: true },
+      { image: SecondFir0, margin: getMargin(), y: getY(), width: 7 },
+      { image: SecondFir1, margin: getMargin(), y: getY(), width: 7 },
+      { image: SecondFir2, margin: getMargin(), y: getY(), width: 7 },
+      {
+        image: SecondFir3,
+        margin: getMargin(),
+        y: getY(),
+        width: 7,
+        expanded: true,
+      },
     ],
   },
   {
@@ -87,18 +100,24 @@ const projectDetails = [
       {
         firstColumn: 1,
         images: [
-          { image: Despeck3, margin: getMargin(), width: 7 },
-          { image: Despeck1, margin: getMargin(), width: 7 },
-          { image: Despeck5, margin: getMargin(), width: 7 },
+          { image: Despeck3, margin: getMargin(), y: getY(), width: 7 },
+          { image: Despeck1, margin: getMargin(), y: getY(), width: 7 },
+          { image: Despeck5, margin: getMargin(), y: getY(), width: 7 },
         ],
       },
       {
         firstColumn: 3,
         images: [
-          { image: Despeck6, margin: getMargin(), width: 5 },
-          { image: Despeck0, margin: getMargin(), width: 5 },
-          { image: Despeck2, margin: getMargin(), width: 5, expanded: true },
-          { image: Despeck4, margin: getMargin(), width: 5 },
+          { image: Despeck6, margin: getMargin(), y: getY(), width: 5 },
+          { image: Despeck0, margin: getMargin(), y: getY(), width: 5 },
+          {
+            image: Despeck2,
+            margin: getMargin(),
+            y: getY(),
+            width: 5,
+            expanded: true,
+          },
+          { image: Despeck4, margin: getMargin(), y: getY(), width: 5 },
         ],
       },
     ],
@@ -108,12 +127,28 @@ const projectDetails = [
     firstColumn: 0,
     textOffset: 8,
     images: [
-      { image: DisplacementInversion0, margin: getMargin(), width: 5 },
-      { image: DisplacementInversion2, margin: getMargin(), width: 5 },
-      { image: DisplacementInversion3, margin: getMargin(), width: 5 },
+      {
+        image: DisplacementInversion0,
+        margin: getMargin(),
+        y: getY(),
+        width: 5,
+      },
+      {
+        image: DisplacementInversion2,
+        margin: getMargin(),
+        y: getY(),
+        width: 5,
+      },
+      {
+        image: DisplacementInversion3,
+        margin: getMargin(),
+        y: getY(),
+        width: 5,
+      },
       {
         image: DisplacementInversion1,
         margin: getMargin(),
+        y: getY(),
         width: 5,
         expanded: true,
       },
@@ -124,10 +159,10 @@ const projectDetails = [
     firstColumn: 1,
     textOffset: 6,
     images: [
-      { image: Fur0, margin: getMargin(), width: 5 },
-      { image: Fur2, margin: getMargin(), width: 7 },
-      { image: Fur3, margin: getMargin(), width: 7 },
-      { image: Fur1, margin: getMargin(), width: 7, expanded: true },
+      { image: Fur0, margin: getMargin(), y: getY(), width: 5 },
+      { image: Fur2, margin: getMargin(), y: getY(), width: 7 },
+      { image: Fur3, margin: getMargin(), y: getY(), width: 7 },
+      { image: Fur1, margin: getMargin(), y: getY(), width: 7, expanded: true },
     ],
   },
   {
@@ -135,9 +170,15 @@ const projectDetails = [
     firstColumn: 2,
     textOffset: 1,
     images: [
-      { image: GhostWillow1, margin: getMargin(), width: 7, expanded: true },
-      { image: GhostWillow2, margin: getMargin(), width: 7 },
-      { image: GhostWillow0, margin: getMargin(), width: 5 },
+      {
+        image: GhostWillow1,
+        margin: getMargin(),
+        y: getY(),
+        width: 7,
+        expanded: true,
+      },
+      { image: GhostWillow2, margin: getMargin(), y: getY(), width: 7 },
+      { image: GhostWillow0, margin: getMargin(), y: getY(), width: 5 },
     ],
   },
   {
@@ -145,9 +186,15 @@ const projectDetails = [
     firstColumn: 0,
     textOffset: 6,
     images: [
-      { image: MemoryCell1, margin: getMargin(), width: 7, expanded: true },
-      { image: MemoryCell2, margin: getMargin(), width: 5 },
-      { image: MemoryCell0, margin: getMargin(), width: 7 },
+      {
+        image: MemoryCell1,
+        margin: getMargin(),
+        y: getY(),
+        width: 7,
+        expanded: true,
+      },
+      { image: MemoryCell2, margin: getMargin(), y: getY(), width: 5 },
+      { image: MemoryCell0, margin: getMargin(), y: getY(), width: 7 },
     ],
   },
   {
@@ -155,9 +202,15 @@ const projectDetails = [
     firstColumn: 2,
     textOffset: 3,
     images: [
-      { image: NoTitle0, margin: getMargin(), width: 7 },
-      { image: NoTitle2, margin: getMargin(), width: 7 },
-      { image: NoTitle1, margin: getMargin(), width: 7, expanded: true },
+      { image: NoTitle0, margin: getMargin(), y: getY(), width: 7 },
+      { image: NoTitle2, margin: getMargin(), y: getY(), width: 7 },
+      {
+        image: NoTitle1,
+        margin: getMargin(),
+        y: getY(),
+        width: 7,
+        expanded: true,
+      },
     ],
   },
   {
@@ -165,10 +218,16 @@ const projectDetails = [
     firstColumn: 0,
     textOffset: 8,
     images: [
-      { image: PlutosCave0, margin: getMargin(), width: 7 },
-      { image: PlutosCave3, margin: getMargin(), width: 7 },
-      { image: PlutosCave1, margin: getMargin(), width: 7, expanded: true },
-      { image: PlutosCave2, margin: getMargin(), width: 5 },
+      { image: PlutosCave0, margin: getMargin(), y: getY(), width: 7 },
+      { image: PlutosCave3, margin: getMargin(), y: getY(), width: 7 },
+      {
+        image: PlutosCave1,
+        margin: getMargin(),
+        y: getY(),
+        width: 7,
+        expanded: true,
+      },
+      { image: PlutosCave2, margin: getMargin(), y: getY(), width: 5 },
     ],
   },
   {
@@ -176,10 +235,16 @@ const projectDetails = [
     firstColumn: 0,
     textOffset: 1,
     images: [
-      { image: PutALittleOn0, margin: getMargin(), width: 7, expanded: true },
-      { image: PutALittleOn1, margin: getMargin(), width: 7 },
-      { image: PutALittleOn2, margin: getMargin(), width: 7 },
-      { image: PutALittleOn3, margin: getMargin(), width: 7 },
+      {
+        image: PutALittleOn0,
+        margin: getMargin(),
+        y: getY(),
+        width: 7,
+        expanded: true,
+      },
+      { image: PutALittleOn1, margin: getMargin(), y: getY(), width: 7 },
+      { image: PutALittleOn2, margin: getMargin(), y: getY(), width: 7 },
+      { image: PutALittleOn3, margin: getMargin(), y: getY(), width: 7 },
     ],
   },
   {
@@ -187,16 +252,37 @@ const projectDetails = [
     firstColumn: 0,
     textOffset: 6,
     images: [
-      { image: WaitingWatchingWaiting0, margin: getMargin(), width: 7 },
-      { image: WaitingWatchingWaiting1, margin: getMargin(), width: 7 },
-      { image: WaitingWatchingWaiting2, margin: getMargin(), width: 7 },
+      {
+        image: WaitingWatchingWaiting0,
+        margin: getMargin(),
+        y: getY(),
+        width: 7,
+      },
+      {
+        image: WaitingWatchingWaiting1,
+        margin: getMargin(),
+        y: getY(),
+        width: 7,
+      },
+      {
+        image: WaitingWatchingWaiting2,
+        margin: getMargin(),
+        y: getY(),
+        width: 7,
+      },
       {
         image: WaitingWatchingWaiting3,
         margin: getMargin(),
+        y: getY(),
         width: 7,
         expanded: true,
       },
-      { image: WaitingWatchingWaiting4, margin: getMargin(), width: 7 },
+      {
+        image: WaitingWatchingWaiting4,
+        margin: getMargin(),
+        y: getY(),
+        width: 7,
+      },
     ],
   },
 ];
