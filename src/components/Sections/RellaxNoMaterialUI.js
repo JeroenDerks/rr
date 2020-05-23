@@ -6,6 +6,7 @@ import { gridStyle } from 'styles/global';
 import { Parallax } from 'react-scroll-parallax';
 import { useController } from 'react-scroll-parallax';
 import { AppContext } from 'App';
+
 import 'styles/global.css';
 
 export default function RellaxNoMaterialUI({ images, textOffset }) {
@@ -16,6 +17,7 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
   const { parallaxController } = useController();
   React.useLayoutEffect(() => {
     const handler = () => parallaxController.update();
+    console.log(handler);
     window.addEventListener('load', handler);
     return () => window.removeEventListener('load', handler);
   }, [parallaxController]);
@@ -68,8 +70,6 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
     setFullScreenImg();
   };
 
-  console.log(imageArr);
-
   return (
     <div className={style.categoryWrapper}>
       <DialogWindow
@@ -121,6 +121,7 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
                       cursor: 'pointer',
                     }}
                   />
+
                   {expanded === true && (
                     <img
                       src={PlusIcon}
