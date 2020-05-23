@@ -8,6 +8,7 @@ import { useController } from 'react-scroll-parallax';
 import { AppContext } from 'App';
 import 'styles/global.css';
 
+import ImageFadeIn from 'react-image-fade-in';
 export default function RellaxNoMaterialUI({ images, textOffset }) {
   const {
     state: { columnWidth },
@@ -110,6 +111,18 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
                   }}
                   className={style.transition}
                 >
+                  <ImageFadeIn
+                    width={'100%'}
+                    height={'100%'}
+                    src={imaimagegeSrc}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      boxShadow:
+                        width !== 6 && '5px 5px 10px 5px rgba(0,0,0,0.27)',
+                      cursor: 'pointer',
+                    }}
+                  />
                   <img
                     src={image}
                     alt={image}
