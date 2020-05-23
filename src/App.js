@@ -21,30 +21,40 @@ export const AppContext = React.createContext();
 //   { bg: '#ffffff', border: '#eeeeee' }, // Landing page
 // ];
 
-// Colors Lorne
+// Colors Lorne's photos
+// const defaultColors = [
+//   { bg: '#e8eed4' }, // Lokoj
+//   { bg: '#cfc1a4' }, // Aferoj
+//   { bg: '#d0c1c6' }, // Bildoj
+//   { bg: '#f5b596' }, // Artist
+//   { bg: '#ffffff' }, // Landing page
+// ];
+
+// Colors Lorne brighter
 const defaultColors = [
-  { bg: '#c8d3b9', border: '#e8eed4' }, // Lokoj
-  { bg: '#dbccb0', border: '#cfc1a4' }, // Aferoj
-  { bg: '#d0d6db', border: '#d0c1c6' }, // Bildoj
-  { bg: '#edcbbd', border: '#f5b596' }, // Artist
-  { bg: '#ffffff', border: '#eeeeee' }, // Landing page
+  { bg: '#f5ffd2' }, // Lokoj #f5ffd2
+  { bg: '#feebc0' }, // Aferoj
+  { bg: '#ffeff4' }, // Bildoj
+  { bg: '#ffc0a2' }, // Artist
+  { bg: '#ffffff' }, // Landing page
 ];
 
 function App() {
   const handleResize = () =>
     window.innerWidth < 1200 ? (window.innerWidth / (12 / 5)) * 1.5 : 750;
 
-  const [selectedCategory, setCategory] = React.useState(0);
+  const DEFAULT_CATEGORY = 1;
+  const [selectedCategory, setCategory] = React.useState(DEFAULT_CATEGORY);
   const [minHeight, setMinHeight] = React.useState(handleResize);
   const [backgroundColor, setBgColor] = React.useState();
 
   const columnWidth =
-    (window.innerWidth < 1200 ? window.innerWidth : 1200) / 12;
+    window.innerWidth < 1200 ? window.innerWidth / 12 : 1200 / 16;
 
   const classes = gridStyle();
 
   React.useEffect(() => {
-    setColor(0); // eslint-disable-next-line
+    setColor(DEFAULT_CATEGORY); // eslint-disable-next-line
   }, []);
 
   React.useEffect(() => {

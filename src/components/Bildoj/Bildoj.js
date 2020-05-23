@@ -1,7 +1,5 @@
 import React from 'react';
-import RellaxSingle from 'components/Sections/RellaxSingle';
-import SectionStroke from 'components/Sections/SectionStroke';
-import SectionSquare from 'components/Sections/SectionSquare';
+
 import RellaxNoMaterialUI from 'components/Sections/RellaxNoMaterialUI';
 import circle_ice from 'assets/images/compr_bildoj/circle_ice.png';
 import circle_mineral from 'assets/images/compr_bildoj/circle_mineral.png';
@@ -25,19 +23,8 @@ import stroke_solitary_isle from 'assets/images/compr_bildoj/stroke_solitary_isl
 import stroke_splash from 'assets/images/compr_bildoj/stroke_splash.jpg';
 import stroke_twin_pines from 'assets/images/compr_bildoj/stroke_twin_pines.jpg';
 
-const getMargin = () => {
-  const size = 300;
-  return (
-    parseInt(Math.random() * size) +
-    'px ' +
-    parseInt(Math.random() * size) +
-    'px ' +
-    parseInt(Math.random() * size) +
-    'px ' +
-    parseInt(Math.random() * size) +
-    'px '
-  );
-};
+import { getMargin } from 'utils/Helperfunctions';
+import { getY } from 'utils/Helperfunctions';
 
 const projectDetails = [
   {
@@ -45,12 +32,23 @@ const projectDetails = [
     component: RellaxNoMaterialUI,
     firstColumn: 1,
     images: [
-      { image: circle_ice, margin: getMargin(), width: 6 },
-      { image: circle_mineral, margin: getMargin(), width: 6 },
-      { image: circle_moss_mushroom, margin: getMargin(), width: 6 },
-      { image: circle_moss_landscape, margin: getMargin(), width: 6 },
-      { image: circle_moss, margin: getMargin(), width: 6 },
-      { image: circle_orange_ichen, margin: getMargin(), width: 6 },
+      { image: circle_ice, margin: getMargin(), y: getY(), width: 6 },
+      { image: circle_mineral, margin: getMargin(), y: getY(), width: 6 },
+      {
+        image: circle_moss_mushroom,
+        margin: getMargin(),
+        y: getY(),
+        width: 6,
+        expanded: true,
+      },
+      {
+        image: circle_moss_landscape,
+        margin: getMargin(),
+        y: getY(),
+        width: 6,
+      },
+      { image: circle_moss, margin: getMargin(), y: getY(), width: 6 },
+      { image: circle_orange_ichen, margin: getMargin(), y: getY(), width: 6 },
     ],
   },
   {
@@ -62,12 +60,13 @@ const projectDetails = [
       {
         image: drawing_memportreto0,
         margin: getMargin(),
+        y: getY(),
         width: 7,
         expanded: true,
       },
-      { image: drawing_memportreto1, margin: getMargin(), width: 7 },
-      { image: drawing_memportreto2, margin: getMargin(), width: 7 },
-      { image: drawing_memportreto3, margin: getMargin(), width: 7 },
+      { image: drawing_memportreto1, margin: getMargin(), y: getY(), width: 7 },
+      { image: drawing_memportreto2, margin: getMargin(), y: getY(), width: 7 },
+      { image: drawing_memportreto3, margin: getMargin(), y: getY(), width: 7 },
     ],
   },
   {
@@ -76,21 +75,33 @@ const projectDetails = [
     textOffset: 6,
     firstColumn: 4,
     images: [
-      { image: drawing_nokte, margin: getMargin(), width: 7, expanded: true },
+      {
+        image: drawing_nokte,
+        margin: getMargin(),
+        y: getY(),
+        width: 7,
+        expanded: true,
+      },
     ],
   },
   {
     title: 'Photopgraphs',
-    component: SectionStroke,
+    component: RellaxNoMaterialUI,
     firstColumn: 2,
     images: [
-      { image: stroke_new_orchard, margin: getMargin(), width: 8 },
-      { image: stroke_old_orchard, margin: getMargin(), width: 8 },
-      { image: stroke_pink_tree, margin: getMargin(), width: 8 },
-      { image: stroke_snow_trees, margin: getMargin(), width: 8 },
-      { image: stroke_solitary_isle, margin: getMargin(), width: 8 },
-      { image: stroke_splash, margin: getMargin(), width: 8 },
-      { image: stroke_twin_pines, margin: getMargin(), width: 8 },
+      { image: stroke_new_orchard, margin: getMargin(), y: getY(), width: 8 },
+      { image: stroke_old_orchard, margin: getMargin(), y: getY(), width: 8 },
+      { image: stroke_pink_tree, margin: getMargin(), y: getY(), width: 8 },
+      { image: stroke_snow_trees, margin: getMargin(), y: getY(), width: 8 },
+      { image: stroke_solitary_isle, margin: getMargin(), y: getY(), width: 8 },
+      {
+        image: stroke_splash,
+        margin: getMargin(),
+        y: getY(),
+        width: 8,
+        expanded: true,
+      },
+      { image: stroke_twin_pines, margin: getMargin(), y: getY(), width: 8 },
     ],
   },
 ];

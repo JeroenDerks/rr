@@ -26,8 +26,8 @@ export default function Logo() {
       onMouseEnter={() => highligtCategory(4)}
       onClick={() => selectCategory(4)}
     >
-      <Grid item xs={4}></Grid>
-      <Grid item xs={4}>
+      <Grid item md={4} xs={1}></Grid>
+      <Grid item md={4} xs={10}>
         <img src={logo} alt={'header logo'} style={logoStyle} />
         <p
           style={{
@@ -42,7 +42,7 @@ export default function Logo() {
           The allegorical minimalist
         </p>
       </Grid>
-      <Grid item xs={4}></Grid>
+      <Grid item md={4} xs={1}></Grid>
     </Grid>
   );
 }

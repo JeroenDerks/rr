@@ -46,11 +46,13 @@ export default function Menu() {
       className={classes.grid}
       onMouseLeave={() => resetHighlighting()}
     >
-      <Grid item xs={4}></Grid>
+      <Grid item xs={12} sm={2} lg={4}></Grid>
       {menuItems.map(({ title, subtitle }, i) => (
         <Grid
           item
-          xs={1}
+          sm={2}
+          lg={1}
+          xs={6}
           key={i}
           className={styles.menu}
           onClick={() => selectCategory(i)}
@@ -77,7 +79,7 @@ export default function Menu() {
           </p>
         </Grid>
       ))}
-      <Grid item xs={4}></Grid>
+      <Grid item xs={12} sm={2} lg={4}></Grid>
     </Grid>
   );
 }

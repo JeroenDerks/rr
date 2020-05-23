@@ -1,7 +1,6 @@
 import React from 'react';
 
 import RellaxNoMaterialUI from 'components/Sections/RellaxNoMaterialUI';
-
 import SecondFir0 from 'assets/images/compr_lokoj/2ndFir0.jpg';
 import SecondFir1 from 'assets/images/compr_lokoj/2ndFir1.jpg';
 import SecondFir2 from 'assets/images/compr_lokoj/2ndFir2.jpg';
@@ -53,27 +52,8 @@ import WaitingWatchingWaiting2 from 'assets/images/compr_lokoj/WaitingWatchingWa
 import WaitingWatchingWaiting3 from 'assets/images/compr_lokoj/WaitingWatchingWaiting3.jpg';
 import WaitingWatchingWaiting4 from 'assets/images/compr_lokoj/WaitingWatchingWaiting4.jpg';
 
-const getMargin = () => {
-  const size = 200;
-  const margin =
-    parseInt((Math.random() - 0.5) * size) +
-    'px ' +
-    parseInt((Math.random() - 0.5) * size * 2) +
-    'px ' +
-    parseInt((Math.random() - 0.5) * size) +
-    'px ' +
-    parseInt(Math.random() * size * 2) +
-    'px ';
-  console.log(margin);
-  return margin;
-};
-
-const getY = () => {
-  return [
-    (Math.random() - 0.5) * 400 + 'px',
-    (Math.random() - 0.5) * 400 + 'px',
-  ];
-};
+import { getMargin } from 'utils/Helperfunctions';
+import { getY } from 'utils/Helperfunctions';
 
 const projectDetails = [
   {
@@ -87,7 +67,7 @@ const projectDetails = [
       {
         image: SecondFir3,
         margin: getMargin(),
-        y: getY(),
+        // y: getY(),
         width: 7,
         expanded: true,
       },
@@ -96,30 +76,20 @@ const projectDetails = [
   {
     title: 'Despeck',
     textOffset: 0,
-    rows: [
+    images: [
+      { image: Despeck3, margin: getMargin(), y: getY(), width: 7 },
+      { image: Despeck1, margin: getMargin(), y: getY(), width: 7 },
+      { image: Despeck5, margin: getMargin(), y: getY(), width: 7 },
+      { image: Despeck6, margin: getMargin(), y: getY(), width: 5 },
+      { image: Despeck0, margin: getMargin(), y: getY(), width: 5 },
       {
-        firstColumn: 1,
-        images: [
-          { image: Despeck3, margin: getMargin(), y: getY(), width: 7 },
-          { image: Despeck1, margin: getMargin(), y: getY(), width: 7 },
-          { image: Despeck5, margin: getMargin(), y: getY(), width: 7 },
-        ],
+        image: Despeck2,
+        margin: getMargin(),
+        // y: getY(),
+        width: 5,
+        expanded: true,
       },
-      {
-        firstColumn: 3,
-        images: [
-          { image: Despeck6, margin: getMargin(), y: getY(), width: 5 },
-          { image: Despeck0, margin: getMargin(), y: getY(), width: 5 },
-          {
-            image: Despeck2,
-            margin: getMargin(),
-            y: getY(),
-            width: 5,
-            expanded: true,
-          },
-          { image: Despeck4, margin: getMargin(), y: getY(), width: 5 },
-        ],
-      },
+      { image: Despeck4, margin: getMargin(), y: getY(), width: 5 },
     ],
   },
   {
@@ -148,7 +118,7 @@ const projectDetails = [
       {
         image: DisplacementInversion1,
         margin: getMargin(),
-        y: getY(),
+        // y: getY(),
         width: 5,
         expanded: true,
       },
@@ -162,7 +132,13 @@ const projectDetails = [
       { image: Fur0, margin: getMargin(), y: getY(), width: 5 },
       { image: Fur2, margin: getMargin(), y: getY(), width: 7 },
       { image: Fur3, margin: getMargin(), y: getY(), width: 7 },
-      { image: Fur1, margin: getMargin(), y: getY(), width: 7, expanded: true },
+      {
+        image: Fur1,
+        margin: getMargin(),
+        // y: getY(),
+        width: 7,
+        expanded: true,
+      },
     ],
   },
   {
@@ -173,7 +149,7 @@ const projectDetails = [
       {
         image: GhostWillow1,
         margin: getMargin(),
-        y: getY(),
+        // y: getY(),
         width: 7,
         expanded: true,
       },
@@ -189,7 +165,7 @@ const projectDetails = [
       {
         image: MemoryCell1,
         margin: getMargin(),
-        y: getY(),
+        // y: getY(),
         width: 7,
         expanded: true,
       },
@@ -207,7 +183,7 @@ const projectDetails = [
       {
         image: NoTitle1,
         margin: getMargin(),
-        y: getY(),
+        // y: getY(),
         width: 7,
         expanded: true,
       },
@@ -223,7 +199,7 @@ const projectDetails = [
       {
         image: PlutosCave1,
         margin: getMargin(),
-        y: getY(),
+        // y: getY(),
         width: 7,
         expanded: true,
       },
@@ -238,7 +214,7 @@ const projectDetails = [
       {
         image: PutALittleOn0,
         margin: getMargin(),
-        y: getY(),
+        // y: getY(),
         width: 7,
         expanded: true,
       },
@@ -254,32 +230,32 @@ const projectDetails = [
     images: [
       {
         image: WaitingWatchingWaiting0,
-        margin: getMargin(),
+        margin: '81px 89px -66px 217px',
         y: getY(),
         width: 7,
       },
       {
         image: WaitingWatchingWaiting1,
-        margin: getMargin(),
+        margin: '48px 193px 9px 340px',
         y: getY(),
         width: 7,
       },
       {
         image: WaitingWatchingWaiting2,
-        margin: getMargin(),
+        margin: '-58px 123px 98px 144px',
         y: getY(),
         width: 7,
       },
       {
         image: WaitingWatchingWaiting3,
-        margin: getMargin(),
-        y: getY(),
+        margin: '34px -22px 53px 57px',
+        // y: getY(),
         width: 7,
         expanded: true,
       },
       {
         image: WaitingWatchingWaiting4,
-        margin: getMargin(),
+        margin: '-41px 108px 11px 83px ',
         y: getY(),
         width: 7,
       },
@@ -290,20 +266,9 @@ const projectDetails = [
 export default function Lokoj() {
   return (
     <>
-      {projectDetails.map(
-        ({ firstColumn, images, rows, textOffset, title }, i) => (
-          <React.Fragment key={i}>
-            <RellaxNoMaterialUI
-              title={title}
-              textOffset={textOffset}
-              firstColumn={firstColumn}
-              images={images}
-              rows={rows}
-            />
-            {console.log(title, images)}
-          </React.Fragment>
-        )
-      )}
+      {projectDetails.map(({ images, textOffset }, i) => (
+        <RellaxNoMaterialUI images={images} textOffset={textOffset} key={i} />
+      ))}
     </>
   );
 }
