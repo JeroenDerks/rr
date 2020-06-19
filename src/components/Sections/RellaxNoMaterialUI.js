@@ -1,7 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
 import PlusIcon from 'assets/images/plus-icon-stroked.svg';
-import MinusIcon from 'assets/images/minus-icon-stroked.svg';
 import { gridStyle } from 'styles/global';
 import { Parallax } from 'react-scroll-parallax';
 import { useController } from 'react-scroll-parallax';
@@ -28,7 +27,11 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
   const setImg = (i) => {
     let imgs = _.cloneDeep(imageArr);
     imgs.forEach((img, _i) => {
-      i === _i ? (img.expanded = !img.expanded) : (img.expanded = false);
+      if (i === _i) {
+        img.expanded = !img.expanded;
+      } else {
+        img.expanded = false;
+      }
     });
     setImages([...imgs]);
   };
@@ -47,7 +50,11 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
         img.huge = true;
         img.offset = `${offsetX}px ${offsetY}px`;
         img.storedPos = { x: offsetX, y: offsetY };
-      } else img.expanded = false;
+        img.zIndex = 100;
+      } else {
+        img.expanded = false;
+        img.zIndex = 50;
+      }
     });
     setImages([...imgs]);
   };
@@ -56,7 +63,8 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
     e.stopPropagation();
     let imgs = _.cloneDeep(imageArr);
     imgs[i].huge = false;
-    imgs[i].expanded = false;
+    // imgs[i].expanded = false;
+    imgs[i].zIndex = 0;
     imgs[i].offset = `${imgs[i].storedPos.x}px ${imgs[i].storedPos.y}px`;
     setImages([...imgs]);
   };
@@ -66,7 +74,17 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
       {imageArr &&
         imageArr.map(
           (
-            { expanded, huge, image, margin, offset, storedPos, width, y },
+            {
+              expanded,
+              huge,
+              image,
+              margin,
+              offset,
+              storedPos,
+              width,
+              y,
+              zIndex,
+            },
             i
           ) => (
             <div
@@ -74,8 +92,13 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
                 height: '100%',
                 position: 'absolute',
                 transition: 'z-index .5s',
-                zIndex:
-                  expanded === false ? 0 : expanded === undefined ? 100 : 50,
+                zIndex: zIndex
+                  ? zIndex
+                  : expanded === false
+                  ? 0
+                  : expanded === undefined
+                  ? 100
+                  : 50,
                 pointerEvents: 'none',
                 boxSizing: 'border-box',
                 margin: margin,
@@ -115,22 +138,15 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
                         width !== 6 && '5px 5px 10px 5px rgba(0,0,0,0.27)',
                       cursor: 'pointer',
                     }}
+                    onClick={(e) => huge && restFullScreenImage(e, i)}
                   />
 
-                  {expanded === true && (
+                  {expanded && !huge && (
                     <img
                       src={PlusIcon}
                       alt={'plus icon'}
                       className={style.icon}
                       onClick={(e) => imageToFullscreen(e, i)}
-                    />
-                  )}
-                  {huge === true && (
-                    <img
-                      src={MinusIcon}
-                      alt={'minus icon'}
-                      className={style.icon}
-                      onClick={(e) => restFullScreenImage(e, i)}
                     />
                   )}
                 </div>
