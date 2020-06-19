@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
-import DialogWindow from './Dialog';
 import PlusIcon from 'assets/images/plus-icon-stroked.svg';
+import MinusIcon from 'assets/images/minus-icon-stroked.svg';
 import { gridStyle } from 'styles/global';
 import { Parallax } from 'react-scroll-parallax';
 import { useController } from 'react-scroll-parallax';
@@ -15,16 +15,14 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
   } = React.useContext(AppContext);
 
   const { parallaxController } = useController();
+
   React.useLayoutEffect(() => {
     const handler = () => parallaxController.update();
-    console.log(handler);
     window.addEventListener('load', handler);
     return () => window.removeEventListener('load', handler);
   }, [parallaxController]);
 
-  const [fullScreenImg, setFullScreenImg] = React.useState();
   const [imageArr, setImages] = React.useState(images);
-  const [open, setOpen] = React.useState(false);
   const style = gridStyle();
 
   const setImg = (i) => {
@@ -36,50 +34,41 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
   };
 
   const imageToFullscreen = (e, i) => {
-    // const { x, y, width, height } = e.target.parentNode.getBoundingClientRect();
-
-    // const distX = x - window.innerWidth * 0.5;
-    // const distY = y - window.innerHeight * 0.5;
-
-    // const offsetX = parseInt((distX / width) * 100) + '% ';
-    // const offsetY = parseInt((distY / height) * 100) + '% ';
-
-    // console.log(offsetX, offsetY);
-
-    // let imgs = _.cloneDeep(imageArr);
-    // imgs.forEach((img, _i) => {
-    //   if (i === _i) {
-    //     img.huge = true;
-    //     img.offset = offsetX + offsetY;
-    //   } else img.expanded = false;
-    // });
-    // setImages([...imgs]);
-    // setFullScreenImg({
-    //   image: imageArr[i].image,
-    //   offset: offsetX + offsetY + ' 1',
-    // });
-
-    setFullScreenImg(imageArr[i]);
-
     e.stopPropagation();
-    setOpen(true);
+
+    const { x, y, width, height } = e.target.parentNode.getBoundingClientRect();
+
+    const offsetX = width + x - window.innerWidth / 2;
+    const offsetY = height + y - window.innerHeight / 2;
+
+    let imgs = _.cloneDeep(imageArr);
+    imgs.forEach((img, _i) => {
+      if (i === _i) {
+        img.huge = true;
+        img.offset = `${offsetX}px ${offsetY}px`;
+        img.storedPos = { x: offsetX, y: offsetY };
+      } else img.expanded = false;
+    });
+    setImages([...imgs]);
   };
 
-  const handleClose = (value) => {
-    setOpen(false);
-    setFullScreenImg();
+  const restFullScreenImage = (e, i) => {
+    e.stopPropagation();
+    let imgs = _.cloneDeep(imageArr);
+    imgs[i].huge = false;
+    imgs[i].expanded = false;
+    imgs[i].offset = `${imgs[i].storedPos.x}px ${imgs[i].storedPos.y}px`;
+    setImages([...imgs]);
   };
 
   return (
     <div className={style.categoryWrapper}>
-      <DialogWindow
-        fullScreenImg={fullScreenImg && fullScreenImg.image}
-        handleClose={handleClose}
-        open={open}
-      />
       {imageArr &&
         imageArr.map(
-          ({ expanded, huge, image, margin, offset, width, y }, i) => (
+          (
+            { expanded, huge, image, margin, offset, storedPos, width, y },
+            i
+          ) => (
             <div
               style={{
                 height: '100%',
@@ -98,7 +87,12 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
                 <div
                   onClick={() => setImg(i)}
                   style={{
-                    transformOrigin: huge === true ? offset : 'center',
+                    transformOrigin:
+                      huge === true
+                        ? offset
+                        : storedPos !== null
+                        ? storedPos
+                        : 'center',
                     transform:
                       huge === true
                         ? 'scale3d(2,2,1)'
@@ -107,8 +101,9 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
                         : 'scale3d(1,1,1)',
                     width: width * columnWidth,
                     pointerEvents: 'all',
+                    transition: 'transform .8s',
                   }}
-                  className={style.transition}
+                  // className={style.transition}
                 >
                   <img
                     src={image}
@@ -128,6 +123,14 @@ export default function RellaxNoMaterialUI({ images, textOffset }) {
                       alt={'plus icon'}
                       className={style.icon}
                       onClick={(e) => imageToFullscreen(e, i)}
+                    />
+                  )}
+                  {huge === true && (
+                    <img
+                      src={MinusIcon}
+                      alt={'minus icon'}
+                      className={style.icon}
+                      onClick={(e) => restFullScreenImage(e, i)}
                     />
                   )}
                 </div>
