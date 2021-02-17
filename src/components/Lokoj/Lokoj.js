@@ -1,6 +1,7 @@
 import React from 'react';
-
 import RellaxNoMaterialUI from 'components/Sections/RellaxNoMaterialUI';
+import RellaxVanilla from 'components/Sections/RellaxVanilla';
+
 import SecondFir0 from 'assets/images/compr_lokoj/2ndFir0.jpg';
 import SecondFir1 from 'assets/images/compr_lokoj/2ndFir1.jpg';
 import SecondFir2 from 'assets/images/compr_lokoj/2ndFir2.jpg';
@@ -267,7 +268,7 @@ export default function Lokoj() {
   return (
     <>
       {projectDetails.map(({ images, textOffset }, i) => (
-        <RellaxNoMaterialUI images={images} textOffset={textOffset} key={i} />
+        <RellaxVanilla images={images} textOffset={textOffset} key={i} />
       ))}
     </>
   );

@@ -59,7 +59,7 @@ export default function RellaxNoMaterialUI({
         justifyContent: 'space-between',
         border: '1px solid grey',
       }}
-      className={'wrapper' + i}
+      id={'wrapper' + i}
     >
       {imageArr &&
         imageArr.map((img, j) => (
